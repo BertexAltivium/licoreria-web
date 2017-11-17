@@ -45,7 +45,10 @@
 
 		<action name="registro" method="registroUsuario"
 			class="com.forever.tesistas.web.action.RegistroAction">
-			<result name="success" type="tiles">home.tiles</result>
+			<result name="success" type="redirectAction">
+				<param name="actionName">showInicio</param>
+				<param name="namespace">/socios</param>
+			</result>
 			<result name="input">/registro.jsp</result>
 		</action>
 	</package>
