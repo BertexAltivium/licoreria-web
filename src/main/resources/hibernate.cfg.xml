@@ -1,33 +1,32 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<!DOCTYPE hibernate-configuration PUBLIC
-          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-          "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-
 	<session-factory>
+
 		<property name="dialect">
 			org.hibernate.dialect.MySQLDialect
 		</property>
 		<property name="hibernate.connection.CharSet">UTF-8</property>
-        <property name="hibernate.connection.characterEncoding">UTF-8</property>
-        <property name="hibernate.connection.useUnicode">true</property>
-			
-		<property name="connection.url">
-			jdbc:mysql://localhost:3306/clase2?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false
+		<property name="hibernate.connection.characterEncoding">UTF-8</property>
+		<property name="hibernate.connection.useUnicode">true</property>
+
+		<property name="hibernate.connection.url">
+			jdbc:mysql://localhost:3306/alcohol?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false
 		</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
-		
-		<property name="hibernate.show_sql">true</property>
-        <property name="format_sql">true</property>
-        <property name="use_sql_comments">false</property>
 
-        <mapping class="com.forever.tesistas.web.hibernate.Address" />
+		<property name="hibernate.show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="use_sql_comments">false</property>
+
+
+		<mapping class="com.forever.tesistas.web.hibernate.Address" />
 		<mapping class="com.forever.tesistas.web.hibernate.Distribuidor" />
-		<mapping class="com.forever.tesistas.web.hibernate.Sucursal" />
-		<mapping class="com.forever.tesistas.web.hibernate.Producto" />
-		<mapping class="com.forever.tesistas.web.hibernate.Licor" />
 		<mapping class="com.forever.tesistas.web.hibernate.Factura" />
+		<mapping class="com.forever.tesistas.web.hibernate.Licor" />
+		<mapping class="com.forever.tesistas.web.hibernate.Producto" />
+		<mapping class="com.forever.tesistas.web.hibernate.Sucursal" />
 		<mapping class="com.forever.tesistas.web.hibernate.Usuario" />
 	</session-factory>
 

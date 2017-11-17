@@ -26,8 +26,8 @@ public class LoginAction extends BaseAction {
                 return "not-found";
             }
             // creación de la sesión de usuario
-            getSession().put("nombreCompleto", usuario.getNombreCompleto());
-            getSession().put("isAdmin", usuario.isAdmin());
+            getSession().put("nombreCompleto", usuario.nombreCompleto());
+            getSession().put("isAdmin", usuario.getAdmin());
             getSession().put("mail", usuario.getEmail());
 
             logger.info("Usuario encontrado: " + usuario);

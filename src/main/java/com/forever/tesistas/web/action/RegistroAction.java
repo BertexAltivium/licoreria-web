@@ -25,8 +25,8 @@ public class RegistroAction extends BaseAction {
         logger.info("Usuario guardado exitosamente");
 
         getSession().put("mail", usuario.getEmail());
-        getSession().put("nombreCompleto", usuario.getNombreCompleto());
-        getSession().put("isAdmin", usuario.isAdmin());
+        getSession().put("nombreCompleto", usuario.nombreCompleto());
+        getSession().put("isAdmin", usuario.getAdmin());
 
         return "success";
     }
