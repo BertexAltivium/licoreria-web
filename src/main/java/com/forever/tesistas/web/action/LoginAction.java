@@ -21,6 +21,7 @@ public class LoginAction extends BaseAction {
             UsuarioDAO usuarioDAO = new UsuarioDAO();
             Usuario usuario = usuarioDAO.login(login);
 
+            logger.debug("usuario encontrado" + usuario);
             if (usuario == null) { // usuario no encontrado
                 addActionError("Usuario y/o contraseña inválidos");
                 return "not-found";
@@ -33,6 +34,7 @@ public class LoginAction extends BaseAction {
             logger.info("Usuario encontrado: " + usuario);
             return "success";
         } catch (Exception e) {
+            logger.debug("Error en login usuario" + e);
             addActionError(e.getMessage());
             return "error";
         }

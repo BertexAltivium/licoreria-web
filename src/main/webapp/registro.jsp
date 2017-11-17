@@ -14,12 +14,12 @@
 			<form action="<s:url action="registro" namespace="/"/>" method="POST" class="form-signin">
 				<span id="reauth-email" class="reauth-email"></span>
 				<s:fielderror/>
-				<s:textfield name="usuario.email" class="form-control" placeholder="usuario@dominio.com"></s:textfield>
-				<s:textfield name="usuario.nombre" class="form-control" placeholder="Nombre" ></s:textfield>
-				<s:textfield name="usuario.apPaterno" class="form-control" placeholder="Apellido paterno"></s:textfield>
-				<s:textfield name="usuario.apMaterno" class="form-control" placeholder="Apellido materno" ></s:textfield>
-				<s:password name="usuario.password" class="form-control" placeholder="Contraseña"></s:password>
-				<s:password name="passwordConfirn" class="form-control"  placeholder="Confirmación"></s:password>
+				<s:textfield name="usuario.email" class="form-control" placeholder="usuario@dominio.com" />
+				<s:textfield name="usuario.nombre" class="form-control" placeholder="Nombre" />
+				<s:textfield name="usuario.apPaterno" class="form-control" placeholder="Apellido paterno" />
+				<s:textfield name="usuario.apMaterno" class="form-control" placeholder="Apellido materno" />
+				<s:password name="usuario.password" class="form-control" placeholder="Contraseña" />
+				<s:password name="passwordConfirn" class="form-control"  placeholder="Confirmación" />
 				<button class="btn btn-lg btn-primary btn-block btn-signin"
 					type="submit">Crear cuenta</button>
 			</form>		

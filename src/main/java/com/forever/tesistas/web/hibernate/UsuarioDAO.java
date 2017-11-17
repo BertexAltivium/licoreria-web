@@ -8,7 +8,7 @@ import com.forever.tesistas.web.pojo.Login;
 public class UsuarioDAO extends BaseHibernateDAO {
     public Usuario login(Login login) {
         Criteria criteria = getSession().createCriteria(Usuario.class)
-                .add(Restrictions.eq("mail", login.getMail()))
+                .add(Restrictions.eq("email", login.getMail()))
                 .add(Restrictions.eq("password", login.getPassword()));
         return (Usuario) criteria.uniqueResult();
     }
