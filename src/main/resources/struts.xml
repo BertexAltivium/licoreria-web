@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.ui.theme" value="simple" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<default-action-ref name="showLoginForm" />
+
+		<!-- Acción que unicamente preparara un pojo para ser enviado junto con 
+			la forma de inicio de sesion al usuario -->
+		<action name="showLoginForm" method="showLoginForm"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success">/login.jsp</result>
+		</action>
+
+		<!-- Acción que realiza la autenticacion del usuario al recuperar los valores 
+			de los campos email y password y emplearlos para hacer la busqueda en la 
+			basese de datos a traves de los objetos DAO relacionados con la entidad (tabla) 
+			usuarios. En caso de que la autenticacion sea correcta (resultado igual a 
+			success, se mostrara un resultado de tipo tiles, que esta definido en el 
+			archivo tiles.xml) -->
+		<action name="login" method="loginUsuario"
+			class="com.forever.tesistas.web.action.LoginAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showInicio</param>
+				<param name="namespace">/socios</param>
+			</result>
+			<result name="input">showLoginForm</result>
+			<result name="not-found">/login.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+
+		<action name="showRegisterForm" method="showRegisterForm"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success">/registro.jsp</result>
+		</action>
+
+		<action name="registro" method="registroUsuario"
+			class="com.forever.tesistas.web.action.RegistroAction">
+			<result name="success" type="tiles">home.tiles</result>
+			<result name="input">/registro.jsp</result>
+		</action>
+	</package>
+
+	<!-- Paquete de acciones que solo pueden ser alcanzadas si se inicio sesion -->
+	<package name="socios" namespace="/socios" extends="struts-default">
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<action name="showInicio" method="showHome"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success" type="tiles">home.tiles</result>
+		</action>
+
+		<action name="logout" method="logoutUsuario"
+			class="com.forever.tesistas.web.action.LoginAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showLoginForm</param>
+				<param name="namespace">/</param>
+			</result>
+		</action>
+
+		<action name="showCambioPasswdForm" method="showChangePasswordForm"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success" type="tiles">cambiopassword.tiles</result>
+		</action>
+
+		<action name="cpasswd" method="cambiarPassword"
+			class="com.forever.tesistas.web.action.CambioPasswdAction">
+			<result name="success">showInicio</result>
+			<result name="passwd-no-cambiado" type="tiles">home.tiles</result>
+			<result name="input" type="tiles">cambiopassword.tiles</result>
+		</action>
+
+
+
+
+	</package>
+</struts>
