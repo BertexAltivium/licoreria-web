@@ -12,7 +12,6 @@ public class RegistroLicorAction extends BaseAction{
 	private static final Logger logger = Logger.getLogger(RegistroLicorAction.class);
 	
 	private Licor licor;
-	private String idGeneroSeleccionado;
 	
 	public String addLicor() {
 		logger.info("addLicor()");

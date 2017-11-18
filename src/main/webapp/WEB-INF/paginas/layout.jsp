@@ -32,13 +32,13 @@
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url action="showInicio" namespace="/socios"/>">Home</a></li>
 					<li><a href="#">Contacto</a></li>
-					<s:if test="usuario.isAdmin()">
+					<s:if test="admin">
 						<li><a
-							href="<s:url action="showInicio" namespace="/socios"/>">Home</a></li>
+							href="<s:url action="addLicor" namespace="/socios"/>">Agregar
+								Licor</a></li>
 
 					</s:if>
-					<li><a href="<s:url action="showInicio" namespace="/socios"/>">Agregar
-							Licor</a></li>
+
 
 
 					<li><a
