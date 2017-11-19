@@ -12,7 +12,8 @@
 		<s:textfield name="licor.subtipo" class="form-control" placeholder="Subtipo" ></s:textfield>
 		<s:textfield name="licor.denominacion" class="form-control" placeholder="Denominación" ></s:textfield>
 		<s:textfield name="licor.contenidoNeto" class="form-control" placeholder="Contenido neto" ></s:textfield>
-		<s:textfield name="licor.descripción" class="form-control" placeholder="Denominación" ></s:textfield>
+		<s:textfield name="licor.anio" type="number" min="1900" class="form-control" placeholder="año" ></s:textfield>
+		
 		<%-- Procesamiento del catalogo de generos como un select --%>
 
 		<button class="btn btn-lg btn-primary btn-block btn-signin"

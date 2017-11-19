@@ -93,7 +93,7 @@
 
 		<action name="altaLicor" method="addLicor" 
 			class="com.forever.tesistas.web.action.RegistroLicorAction">
-			<result name="success" type="tiles">home.tiles</result>
+			<result name="success" type="redirectAction">showInicio</result>
 			<result name="input" type="tiles">licor.add.tiles</result>
 		</action>
 

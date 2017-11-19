@@ -38,6 +38,13 @@ public class RegistroLicorAction extends BaseAction{
 	public void setLicor(Licor licor) {
 		this.licor = licor;
 	}
+	
+	
+	public void validate() {
+		if (licor.getAnio() == 0 ) {
+            addFieldError("usuario.anio", "El año es requerido");
+		}
+	}
 
 
 

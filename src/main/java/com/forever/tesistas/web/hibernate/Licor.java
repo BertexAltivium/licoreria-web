@@ -25,8 +25,8 @@ public class Licor implements java.io.Serializable {
 	private String tipo;
 	private String marca;
 	private String subtipo;
-	private Byte edad;
-	private Byte anio;
+	private Integer edad;
+	private Integer anio;
 	private String denominacion;
 	private String contenidoNeto;
 	private String descripcion;
@@ -41,7 +41,7 @@ public class Licor implements java.io.Serializable {
 		this.marca = marca;
 	}
 
-	public Licor(String tipo, String marca, String subtipo, Byte edad, Byte anio, String denominacion,
+	public Licor(String tipo, String marca, String subtipo, Integer edad, Integer anio, String denominacion,
 			String contenidoNeto, String descripcion, Date createTime, Set<Producto> productos) {
 		this.tipo = tipo;
 		this.marca = marca;
@@ -95,20 +95,20 @@ public class Licor implements java.io.Serializable {
 	}
 
 	@Column(name = "edad")
-	public Byte getEdad() {
+	public Integer getEdad() {
 		return this.edad;
 	}
 
-	public void setEdad(Byte edad) {
+	public void setEdad(Integer edad) {
 		this.edad = edad;
 	}
 
 	@Column(name = "anio")
-	public Byte getAnio() {
+	public Integer getAnio() {
 		return this.anio;
 	}
 
-	public void setAnio(Byte anio) {
+	public void setAnio(Integer anio) {
 		this.anio = anio;
 	}
 
@@ -159,6 +159,13 @@ public class Licor implements java.io.Serializable {
 
 	public void setProductos(Set<Producto> productos) {
 		this.productos = productos;
+	}
+
+	@Override
+	public String toString() {
+		return "Licor [id=" + id + ", tipo=" + tipo + ", marca=" + marca + ", subtipo=" + subtipo + ", edad=" + edad
+				+ ", anio=" + anio + ", denominacion=" + denominacion + ", contenidoNeto=" + contenidoNeto
+				+ ", descripcion=" + descripcion + ", createTime=" + createTime + ", productos=" + productos + "]";
 	}
 
 }
