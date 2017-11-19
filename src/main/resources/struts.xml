@@ -84,7 +84,18 @@
 			<result name="passwd-no-cambiado" type="tiles">home.tiles</result>
 			<result name="input" type="tiles">cambiopassword.tiles</result>
 		</action>
+		
+		<action name="showAddLicorForm" method="showAddLicorForm"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success" type="tiles">licor.add.tiles</result>
+			<result name="noAdmin" type="redirectAction" >showInicio</result>
+		</action>
 
+		<action name="altaLicor" method="addLicor" 
+			class="com.forever.tesistas.web.action.RegistroLicorAction">
+			<result name="success" type="tiles">home.tiles</result>
+			<result name="input" type="tiles">licor.add.tiles</result>
+		</action>
 
 
 

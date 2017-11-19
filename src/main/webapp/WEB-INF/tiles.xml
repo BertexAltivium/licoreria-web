@@ -19,8 +19,8 @@
         <put-attribute name="body" value="/WEB-INF/paginas/cambio-passwd.jsp" />
     </definition>
     
-    <definition name="altalibro.tiles" extends="baseLayout">
+    <definition name="licor.add.tiles" extends="baseLayout">
         <put-attribute name="title" value="Alta libro" />
-        <put-attribute name="body" value="/WEB-INF/paginas/alta-libro.jsp" />
+        <put-attribute name="body" value="/WEB-INF/paginas/alta-licor.jsp" />
     </definition>
 </tiles-definitions>

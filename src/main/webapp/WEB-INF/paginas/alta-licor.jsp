@@ -4,7 +4,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div class="card card-container">
 	<h3>Registro de Alcohol</h3>
-	<s:form action="altalibro" namespace="/socios" method="POST" class="form-signin">
+	<s:form action="altaLicor" namespace="/socios" method="POST" class="form-signin">
 		<span id="reauth-email" class="reauth-email"></span>
 		<s:fielderror/>
 		<s:textfield name="licor.tipo" class="form-control" placeholder="Tipo"></s:textfield>

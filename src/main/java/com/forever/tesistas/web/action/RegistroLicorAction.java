@@ -3,6 +3,7 @@ package com.forever.tesistas.web.action;
 import org.apache.log4j.Logger;
 
 import com.forever.tesistas.web.hibernate.Licor;
+import com.forever.tesistas.web.hibernate.LicorDAO;
 
 public class RegistroLicorAction extends BaseAction{
 
@@ -17,8 +18,10 @@ public class RegistroLicorAction extends BaseAction{
 		logger.info("addLicor()");
 		
 		logger.info("Licor: " + licor);
-		
-		
+		LicorDAO licorDAO = new LicorDAO();
+		licorDAO.saveLicor(licor);
+		logger.info("Licor agregado");
+		logger.info("Licor Id" + licor.getId());
 		return "success";
 	}
 

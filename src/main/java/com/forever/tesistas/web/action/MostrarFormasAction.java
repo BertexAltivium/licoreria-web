@@ -62,6 +62,15 @@ public class MostrarFormasAction extends BaseAction {
 		}
 		return "success";
 	}
+	
+	public String showAddLicorForm() {
+		admin = (Boolean) getSession().get("isAdmin");
+		if (admin == null) {
+			admin = false;
+			return "noAdmin";
+		}
+		return "success";
+	}
 
 	/**
 	 * @return the login

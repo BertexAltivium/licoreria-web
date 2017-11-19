@@ -34,7 +34,7 @@
 					<li><a href="#">Contacto</a></li>
 					<s:if test="admin">
 						<li><a
-							href="<s:url action="addLicor" namespace="/socios"/>">Agregar
+							href="<s:url action="showAddLicorForm" namespace="/socios"/>">Agregar
 								Licor</a></li>
 
 					</s:if>
