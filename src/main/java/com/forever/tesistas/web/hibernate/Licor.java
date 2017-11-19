@@ -1,5 +1,6 @@
 package com.forever.tesistas.web.hibernate;
 // default package
+
 // Generated Nov 16, 2017 5:00:04 PM by Hibernate Tools 4.3.5.Final
 
 import javax.persistence.*;
@@ -16,148 +17,148 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Table(name = "licor", catalog = "alcohol")
 public class Licor implements java.io.Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
-    private Integer id;
-    private String tipo;
-    private String marca;
-    private String subtipo;
-    private Byte edad;
-    private Byte anio;
-    private String denominacion;
-    private String contenidoNeto;
-    private String descripcion;
-    private Date createTime;
-    private Set<Producto> productos = new HashSet<Producto>(0);
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+	private Integer id;
+	private String tipo;
+	private String marca;
+	private String subtipo;
+	private Byte edad;
+	private Byte anio;
+	private String denominacion;
+	private String contenidoNeto;
+	private String descripcion;
+	private Date createTime;
+	private Set<Producto> productos = new HashSet<Producto>(0);
 
-    public Licor() {
-    }
+	public Licor() {
+	}
 
-    public Licor(String tipo, String marca) {
-        this.tipo = tipo;
-        this.marca = marca;
-    }
+	public Licor(String tipo, String marca) {
+		this.tipo = tipo;
+		this.marca = marca;
+	}
 
-    public Licor(String tipo, String marca, String subtipo, Byte edad, Byte anio, String denominacion,
-                 String contenidoNeto, String descripcion, Date createTime, Set<Producto> productos) {
-        this.tipo = tipo;
-        this.marca = marca;
-        this.subtipo = subtipo;
-        this.edad = edad;
-        this.anio = anio;
-        this.denominacion = denominacion;
-        this.contenidoNeto = contenidoNeto;
-        this.descripcion = descripcion;
-        this.createTime = createTime;
-        this.productos = productos;
-    }
+	public Licor(String tipo, String marca, String subtipo, Byte edad, Byte anio, String denominacion,
+			String contenidoNeto, String descripcion, Date createTime, Set<Producto> productos) {
+		this.tipo = tipo;
+		this.marca = marca;
+		this.subtipo = subtipo;
+		this.edad = edad;
+		this.anio = anio;
+		this.denominacion = denominacion;
+		this.contenidoNeto = contenidoNeto;
+		this.descripcion = descripcion;
+		this.createTime = createTime;
+		this.productos = productos;
+	}
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-    @Column(name = "id", unique = true, nullable = false)
-    public Integer getId() {
-        return this.id;
-    }
+	@Column(name = "id", unique = true, nullable = false)
+	public Integer getId() {
+		return this.id;
+	}
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
-    @Column(name = "tipo", nullable = false, length = 45)
-    public String getTipo() {
-        return this.tipo;
-    }
+	@Column(name = "tipo", nullable = false, length = 45)
+	public String getTipo() {
+		return this.tipo;
+	}
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 
-    @Column(name = "marca", nullable = false, length = 45)
-    public String getMarca() {
-        return this.marca;
-    }
+	@Column(name = "marca", nullable = false, length = 45)
+	public String getMarca() {
+		return this.marca;
+	}
 
-    public void setMarca(String marca) {
-        this.marca = marca;
-    }
+	public void setMarca(String marca) {
+		this.marca = marca;
+	}
 
-    @Column(name = "subtipo", length = 45)
-    public String getSubtipo() {
-        return this.subtipo;
-    }
+	@Column(name = "subtipo", length = 45)
+	public String getSubtipo() {
+		return this.subtipo;
+	}
 
-    public void setSubtipo(String subtipo) {
-        this.subtipo = subtipo;
-    }
+	public void setSubtipo(String subtipo) {
+		this.subtipo = subtipo;
+	}
 
-    @Column(name = "edad")
-    public Byte getEdad() {
-        return this.edad;
-    }
+	@Column(name = "edad")
+	public Byte getEdad() {
+		return this.edad;
+	}
 
-    public void setEdad(Byte edad) {
-        this.edad = edad;
-    }
+	public void setEdad(Byte edad) {
+		this.edad = edad;
+	}
 
-    @Column(name = "anio")
-    public Byte getAnio() {
-        return this.anio;
-    }
+	@Column(name = "anio")
+	public Byte getAnio() {
+		return this.anio;
+	}
 
-    public void setAnio(Byte anio) {
-        this.anio = anio;
-    }
+	public void setAnio(Byte anio) {
+		this.anio = anio;
+	}
 
-    @Column(name = "denominacion", length = 45)
-    public String getDenominacion() {
-        return this.denominacion;
-    }
+	@Column(name = "denominacion", length = 45)
+	public String getDenominacion() {
+		return this.denominacion;
+	}
 
-    public void setDenominacion(String denominacion) {
-        this.denominacion = denominacion;
-    }
+	public void setDenominacion(String denominacion) {
+		this.denominacion = denominacion;
+	}
 
-    @Column(name = "contenido_neto", length = 45)
-    public String getContenidoNeto() {
-        return this.contenidoNeto;
-    }
+	@Column(name = "contenido_neto", length = 45)
+	public String getContenidoNeto() {
+		return this.contenidoNeto;
+	}
 
-    public void setContenidoNeto(String contenidoNeto) {
-        this.contenidoNeto = contenidoNeto;
-    }
+	public void setContenidoNeto(String contenidoNeto) {
+		this.contenidoNeto = contenidoNeto;
+	}
 
-    @Column(name = "descripcion", length = 45)
-    public String getDescripcion() {
-        return this.descripcion;
-    }
+	@Column(name = "descripcion", length = 45)
+	public String getDescripcion() {
+		return this.descripcion;
+	}
 
-    public void setDescripcion(String descripcion) {
-        this.descripcion = descripcion;
-    }
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_time", length = 19)
-    public Date getCreateTime() {
-        return this.createTime;
-    }
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "create_time", length = 19, insertable = false)
+	public Date getCreateTime() {
+		return this.createTime;
+	}
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
-    }
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
+	}
 
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "licor_has_producto", catalog = "cadena_licorerias", joinColumns = {
-            @JoinColumn(name = "licor_id", nullable = false, updatable = false)}, inverseJoinColumns = {
-            @JoinColumn(name = "producto_id", nullable = false, updatable = false)})
-    public Set<Producto> getProductos() {
-        return this.productos;
-    }
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "licor_has_producto", catalog = "cadena_licorerias", joinColumns = {
+			@JoinColumn(name = "licor_id", nullable = false, updatable = false) }, inverseJoinColumns = {
+					@JoinColumn(name = "producto_id", nullable = false, updatable = false) })
+	public Set<Producto> getProductos() {
+		return this.productos;
+	}
 
-    public void setProductos(Set<Producto> productos) {
-        this.productos = productos;
-    }
+	public void setProductos(Set<Producto> productos) {
+		this.productos = productos;
+	}
 
 }
