@@ -33,4 +33,9 @@
         <put-attribute name="title" value="Alta sucursal" />
         <put-attribute name="body" value="/WEB-INF/paginas/alta-sucursal.jsp" />
     </definition>
+
+    <definition name="altadistribuidor.tiles" extends="baseLayout">
+        <put-attribute name="title" value="Alta distribuidor" />
+        <put-attribute name="body" value="/WEB-INF/paginas/alta-distribuidor.jsp" />
+    </definition>
 </tiles-definitions>

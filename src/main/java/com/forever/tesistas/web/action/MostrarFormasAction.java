@@ -9,6 +9,7 @@ import com.forever.tesistas.web.hibernate.AddressDAO;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
 import com.forever.tesistas.web.pojo.RegistroSucursal;
+import com.forever.tesistas.web.pojo.RegistroDistribuidor;
 
 
 
@@ -125,6 +126,30 @@ public class MostrarFormasAction extends BaseAction {
 
     /*
     * Termina seccion correspondiente a Sucursales
+    */
+
+     /**
+     * Inicia seccion correspondiente a Distribuidores
+   	*/
+    public String showDistribuidorForm() {
+        admin = (Boolean) getSession().get("isAdmin");
+		if (admin == null) {
+			admin = false;
+			return "noAdmin";
+		}
+        logger.info("showDistribuidorForm()");
+        logger.debug("Instanciando POJO para la forma distribuidor");
+        RegistroDistribuidor registroDistribuidor = new RegistroDistribuidor();
+        AddressDAO addressDAO = new AddressDAO();
+		direcciones = (List<Address>)(Object)addressDAO.getAllAddress();
+        //logger.info("Cantidad de objetos recuperados: "+direcciones.size());
+        //logger.info("direccion 1:"+direcciones.get(0).getCalle());
+        
+        return "success";
+    }
+
+    /*
+    * Termina seccion Distribuidores
     */
 
 	/**
