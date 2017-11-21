@@ -23,4 +23,8 @@
         <put-attribute name="title" value="Alta libro" />
         <put-attribute name="body" value="/WEB-INF/paginas/alta-licor.jsp" />
     </definition>
+    <definition name="altadireccion.tiles" extends="baseLayout">
+        <put-attribute name="title" value="Alta direccion" />
+        <put-attribute name="body" value="/WEB-INF/paginas/alta-direccion.jsp" />
+    </definition>
 </tiles-definitions>

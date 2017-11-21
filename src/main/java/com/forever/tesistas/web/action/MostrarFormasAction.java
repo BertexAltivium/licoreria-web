@@ -72,6 +72,16 @@ public class MostrarFormasAction extends BaseAction {
 		return "success";
 	}
 
+	public String showDireccionForm() {
+		admin = (Boolean) getSession().get("isAdmin");
+		if (admin == null) {
+			admin = false;
+			return "noAdmin";
+		}
+        return "success";
+    }
+
+
 	/**
 	 * @return the login
 	 */

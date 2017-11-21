@@ -97,7 +97,17 @@
 			<result name="input" type="tiles">licor.add.tiles</result>
 		</action>
 
-
+		<!-- Seccion: Direccion -->
+		<action name="showDireccionForm" method="showDireccionForm"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success" type="tiles">altadireccion.tiles</result>
+			<result name="noAdmin" type="redirectAction" >showInicio</result>
+		</action>
+		<action name="address" method="addAddress"
+			class="com.forever.tesistas.web.action.RegistroDireccionAction">
+			<result name="success" type="redirectAction">showDireccionForm</result>
+			<!-- <result name="success" type="tiles">altadireccion.tiles</result> -->
+		</action>
 
 	</package>
 </struts>
