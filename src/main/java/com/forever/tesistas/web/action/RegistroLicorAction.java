@@ -5,25 +5,54 @@ import org.apache.log4j.Logger;
 import com.forever.tesistas.web.hibernate.Licor;
 import com.forever.tesistas.web.hibernate.LicorDAO;
 
-public class RegistroLicorAction extends BaseAction{
-
+public class RegistroLicorAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
 
 	private static final Logger logger = Logger.getLogger(RegistroLicorAction.class);
-	
+
 	private Licor licor;
 	
+
+	private Integer licorId;
+
 	public String addLicor() {
 		logger.info("addLicor()");
-		
+
 		logger.info("Licor: " + licor);
 		LicorDAO licorDAO = new LicorDAO();
-		licorDAO.saveLicor(licor);
+		if (licor.getId()!= null) {
+			licorDAO.updateLicor(licor);
+			logger.info("Licor actualizado");
+
+		} else {
+			licorDAO.saveLicor(licor);
+			logger.info("Licor agregado");
+
+		}
+		logger.info("Licor Id" + licor.getId());
+		return "success";
+	}
+	
+	
+	public String editLicor() {
+		
+		
+		
+		logger.info("editLicor()");
+
+		logger.info("Licor: " + licor);
+		logger.info("id as param" + licorId);
+		if (licor.getId()== null) {
+			licor.setId(licorId);
+		}
+		LicorDAO licorDAO = new LicorDAO();
+		licorDAO.updateLicor(licor);
 		logger.info("Licor agregado");
 		logger.info("Licor Id" + licor.getId());
 		return "success";
 	}
+	
 
 	/**
 	 * @return the licor
@@ -33,20 +62,27 @@ public class RegistroLicorAction extends BaseAction{
 	}
 
 	/**
-	 * @param licor the licor to set
+	 * @param licor
+	 *            the licor to set
 	 */
 	public void setLicor(Licor licor) {
+		
+		
 		this.licor = licor;
 	}
-	
-	
+
 	public void validate() {
-		if (licor.getAnio() == 0 ) {
-            addFieldError("usuario.anio", "El año es requerido");
+		if (licor.getAnio() == 0) {
+			addFieldError("usuario.anio", "El año es requerido");
 		}
 	}
 
+	public Integer getLicorId() {
+		return licorId;
+	}
 
+	public void setLicorId(Integer licorId) {
+		this.licorId = licorId;
+	}
 
-	
 }

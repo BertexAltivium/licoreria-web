@@ -9,7 +9,7 @@ import org.hibernate.criterion.Restrictions;
 public class LicorDAO extends BaseHibernateDAO {
 	@SuppressWarnings("unchecked")
 	public List<Licor> getAllLicors() {
-		return (List<Licor>)(Object)findAll(Licor.class);
+		return (List<Licor>) (Object) findAll(Licor.class);
 	}
 
 	public List<Object> getByMarca(String marca) {
@@ -24,12 +24,17 @@ public class LicorDAO extends BaseHibernateDAO {
 		return findByCriteria(criteria);
 	}
 
+	public Licor getById(Integer id) {
+		Criteria criteria = getSession().createCriteria(Licor.class).add(Restrictions.eq("id", id.intValue()));
+		return (Licor) criteria.uniqueResult();
+	}
+
 	public void saveLicor(Licor licor) {
 		super.save(licor);
 	}
-	
+
 	public void updateLicor(Licor licor) {
 		super.saveOrUpdate(licor);
 	}
-	
+
 }

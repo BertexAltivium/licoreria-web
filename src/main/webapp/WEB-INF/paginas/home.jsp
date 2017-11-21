@@ -39,7 +39,10 @@
 				<td><s:property value="marca" /></td>
 				<s:if test="admin">
 
-					<td>Editar</td>
+					<td><a
+						href="<s:url action="showEditLicorForm" namespace="/socios">
+							<s:param name="licorId">${licor.id}</s:param>
+						</s:url>">Editar</a></td>
 					<td>Eliminar</td>
 				</s:if>
 			</tr>

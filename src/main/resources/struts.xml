@@ -84,14 +84,15 @@
 			<result name="passwd-no-cambiado" type="tiles">home.tiles</result>
 			<result name="input" type="tiles">cambiopassword.tiles</result>
 		</action>
-		
+
 		<action name="showAddLicorForm" method="showAddLicorForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">
 			<result name="success" type="tiles">licor.add.tiles</result>
-			<result name="noAdmin" type="redirectAction" >showInicio</result>
+			<result name="noAdmin" type="redirectAction">showInicio
+			</result>
 		</action>
 
-		<action name="altaLicor" method="addLicor" 
+		<action name="altaLicor" method="addLicor"
 			class="com.forever.tesistas.web.action.RegistroLicorAction">
 			<result name="success" type="redirectAction">showInicio</result>
 			<result name="input" type="tiles">licor.add.tiles</result>
@@ -101,7 +102,8 @@
 		<action name="showDireccionForm" method="showDireccionForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">
 			<result name="success" type="tiles">altadireccion.tiles</result>
-			<result name="noAdmin" type="redirectAction" >showInicio</result>
+			<result name="noAdmin" type="redirectAction">showInicio
+			</result>
 		</action>
 		<action name="address" method="addAddress"
 			class="com.forever.tesistas.web.action.RegistroDireccionAction">
@@ -110,12 +112,12 @@
 			<!-- <result name="success" type="tiles">altadireccion.tiles</result> -->
 		</action>
 
-		<!-- Seccion: Sucursal  -->
+		<!-- Seccion: Sucursal -->
 		<action name="showSucursalForm" method="showSucursalForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">
 			<result name="success" type="tiles">altasucursal.tiles</result>
 		</action>
-	
+
 		<action name="sucursal" method="addSucursal"
 			class="com.forever.tesistas.web.action.RegistroSucursalAction">
 			<result name="success" type="redirectAction">
@@ -124,12 +126,12 @@
 			</result>
 			<result name="input" type="tiles">altasucursal.tiles</result>
 		</action>
-		<!-- Seccion: Distribuidor  -->
+		<!-- Seccion: Distribuidor -->
 		<action name="showDistribuidorForm" method="showDistribuidorForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">
 			<result name="success" type="tiles">altadistribuidor.tiles</result>
 		</action>
-	
+
 		<action name="distribuidor" method="addDistribuidor"
 			class="com.forever.tesistas.web.action.RegistroDistribuidorAction">
 			<result name="success" type="redirectAction">
@@ -137,6 +139,23 @@
 				<param name="namespace">/socios</param>
 			</result>
 			<result name="input" type="tiles">altadistribuidor.tiles</result>
+		</action>
+
+		<action name="showEditLicorForm" method="showEditLicorForm"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success" type="tiles">licor.edit.tiles
+			</result>
+			<result name="noAdmin" type="redirectAction">showInicio
+			</result>
+		</action>
+
+		<action name="editLicor" method="editLicor"
+			class="com.forever.tesistas.web.action.RegistroLicorAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showInicio</param>
+				<param name="namespace">/socios</param>
+			</result>
+			<result name="input" type="tiles">licor.edit.tiles</result>
 		</action>
 	</package>
 </struts>
