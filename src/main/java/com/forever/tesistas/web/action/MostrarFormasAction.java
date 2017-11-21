@@ -1,10 +1,17 @@
 package com.forever.tesistas.web.action;
 
+import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.forever.tesistas.web.hibernate.Usuario;
+import com.forever.tesistas.web.hibernate.Address;
+import com.forever.tesistas.web.hibernate.AddressDAO;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
+import com.forever.tesistas.web.pojo.RegistroSucursal;
+
+
+
 
 /**
  * @author Gabriel Gonzalez
@@ -21,6 +28,7 @@ public class MostrarFormasAction extends BaseAction {
 	private Usuario usuario;
 	private CambioPassword cambioPassword;
 	private Boolean admin;
+	private List<Address> direcciones;
 
 	/**
 	 * Acción por defecto que preparará la forma web para el inicio de sesión del
@@ -81,6 +89,43 @@ public class MostrarFormasAction extends BaseAction {
         return "success";
     }
 
+    /**
+     * Inicia seccion correspondiente a Sucursales
+   	*/
+    public String showSucursalForm() {
+        admin = (Boolean) getSession().get("isAdmin");
+		if (admin == null) {
+			admin = false;
+			return "noAdmin";
+		}
+        logger.info("showSucursalForm()");
+        logger.debug("Instanciando POJO para la forma sucursal");
+        RegistroSucursal registroSucursal = new RegistroSucursal();
+        AddressDAO addressDAO = new AddressDAO();
+		direcciones = (List<Address>)(Object)addressDAO.getAllAddress();
+        //logger.info("Cantidad de objetos recuperados: "+direcciones.size());
+        //logger.info("direccion 1:"+direcciones.get(0).getCalle());
+        
+        return "success";
+    }
+    
+    /**
+     * @return the address list
+     */
+    public List<Address> getDirecciones() {
+        return direcciones;
+    }
+
+    /**
+     * @param direcciones the List<Address> to set
+     */
+    public void setDirecciones(List<Address> direcciones) {
+        this.direcciones = direcciones;
+    }
+
+    /*
+    * Termina seccion correspondiente a Sucursales
+    */
 
 	/**
 	 * @return the login

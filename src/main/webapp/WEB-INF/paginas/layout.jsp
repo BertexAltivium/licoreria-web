@@ -37,6 +37,9 @@
 							href="<s:url action="showAddLicorForm" namespace="/socios"/>">Agregar
 								Licor</a></li>
 						<li><a
+							href="<s:url action="showSucursalForm" namespace="/socios"/>">Agregar
+								Sucursal</a></li>
+						<li><a
 							href="<s:url action="showDireccionForm" namespace="/socios"/>">Agregar
 								Direccion</a></li>
 

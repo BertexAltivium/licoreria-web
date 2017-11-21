@@ -33,6 +33,27 @@ public class RegistroDireccionAction extends BaseAction{
 		return "success";
 	}
 
+	public void validate() {
+        logger.info("validate()");
+
+        logger.info("Información de direccion a registrar: " + address.toString());
+
+        if (address.getNumero() == null || address.getNumero().isEmpty()) {
+            logger.warn("No se recibió numero");
+            addFieldError("address.numero", "El numero es requerido");
+        }
+
+        
+        if (address.getCalle() == null || address.getCalle().isEmpty()) {
+            addFieldError("address.calle", "Calle es requerido");
+        }
+
+
+        if (address.getColonia() == null || address.getColonia().isEmpty()) {
+            addFieldError("address.colonia", "Colonia es requerido");
+        }
+    }
+
 	/**
 	 * @return the address
 	 */
