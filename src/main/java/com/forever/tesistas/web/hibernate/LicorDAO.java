@@ -7,8 +7,9 @@ import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 public class LicorDAO extends BaseHibernateDAO {
-	public List<Object> getAllLibros() {
-		return findAll(Licor.class);
+	@SuppressWarnings("unchecked")
+	public List<Licor> getAllLicors() {
+		return (List<Licor>)(Object)findAll(Licor.class);
 	}
 
 	public List<Object> getByMarca(String marca) {

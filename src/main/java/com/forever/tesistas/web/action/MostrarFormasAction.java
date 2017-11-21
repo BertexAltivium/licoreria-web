@@ -1,15 +1,18 @@
 package com.forever.tesistas.web.action;
 
 import java.util.List;
+
 import org.apache.log4j.Logger;
 
-import com.forever.tesistas.web.hibernate.Usuario;
 import com.forever.tesistas.web.hibernate.Address;
 import com.forever.tesistas.web.hibernate.AddressDAO;
+import com.forever.tesistas.web.hibernate.Licor;
+import com.forever.tesistas.web.hibernate.LicorDAO;
+import com.forever.tesistas.web.hibernate.Usuario;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
-import com.forever.tesistas.web.pojo.RegistroSucursal;
 import com.forever.tesistas.web.pojo.RegistroDistribuidor;
+import com.forever.tesistas.web.pojo.RegistroSucursal;
 
 
 
@@ -30,6 +33,7 @@ public class MostrarFormasAction extends BaseAction {
 	private CambioPassword cambioPassword;
 	private Boolean admin;
 	private List<Address> direcciones;
+	private List<Licor> licores;
 
 	/**
 	 * Acción por defecto que preparará la forma web para el inicio de sesión del
@@ -64,7 +68,11 @@ public class MostrarFormasAction extends BaseAction {
 	}
 
 	public String showHome() {
-
+		logger.info("showHome");
+		LicorDAO licorDAO = new LicorDAO();
+		licores = licorDAO.getAllLicors();
+		logger.info("hay " + licores.size() + " licores");
+		logger.info("licores" + licores);
 		admin = (Boolean) getSession().get("isAdmin");
 		if (admin == null) {
 			admin = false;
@@ -203,6 +211,14 @@ public class MostrarFormasAction extends BaseAction {
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+	
+	public List<Licor> getLicores() {
+		return licores;
+	}
+	
+	public void setLicores(List<Licor> licores) {
+		this.licores = licores;
 	}
 
 }
