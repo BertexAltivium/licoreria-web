@@ -53,8 +53,17 @@
 					<li><a
 						href="<s:url action="showCambioPasswdForm" namespace="/socios"/>">Cambio
 							contraseña</a></li>
-					<li><a href="<s:url action="logout" namespace="/socios"/>">Cerrar
-							Sesi&oacute;n</a></li>
+
+					<s:if test="logged">
+						<li><a href="<s:url action="logout" namespace="/socios"/>">Cerrar
+								Sesi&oacute;n</a></li>
+					</s:if>
+					<s:if test="!logged">
+											<li><a href="<s:url action="logout" namespace="/socios"/>">Iniciar
+								Sesi&oacute;n</a></li>
+					</s:if>
+
+
 				</ul>
 			</div>
 			<!--/.nav-collapse -->

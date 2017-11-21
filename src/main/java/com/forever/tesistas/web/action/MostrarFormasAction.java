@@ -33,6 +33,8 @@ public class MostrarFormasAction extends BaseAction {
 	private List<Address> direcciones;
 	private List<Licor> licores;
 	private Licor licor;
+	private Boolean logged;
+	
 
 	/**
 	 * Acción por defecto que preparará la forma web para el inicio de sesión del
@@ -89,6 +91,7 @@ public class MostrarFormasAction extends BaseAction {
 		logger.info("hay " + licores.size() + " licores");
 		logger.info("licores" + licores);
 		admin = (Boolean) getSession().get("isAdmin");
+		logged = (Boolean) getSession().get("logged");
 		if (admin == null) {
 			admin = false;
 		}
@@ -251,6 +254,14 @@ public class MostrarFormasAction extends BaseAction {
 
 	public void setLicor(Licor licor) {
 		this.licor = licor;
+	}
+	
+	public Boolean getLogged() {
+		return logged;
+	}
+	
+	public void setLogged(Boolean logged) {
+		this.logged = logged;
 	}
 
 }

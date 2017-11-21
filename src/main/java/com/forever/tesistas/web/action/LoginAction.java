@@ -30,7 +30,7 @@ public class LoginAction extends BaseAction {
             getSession().put("nombreCompleto", usuario.nombreCompleto());
             getSession().put("isAdmin", usuario.getAdmin());
             getSession().put("mail", usuario.getEmail());
-
+            getSession().put("logged", true);
             logger.info("Usuario encontrado: " + usuario);
             return "success";
         } catch (Exception e) {
@@ -42,6 +42,8 @@ public class LoginAction extends BaseAction {
 
     public String logoutUsuario() {
         logger.info("Cerrando sesión de usuario");
+        getSession().put("logged", false);
+
         cerrarrSesion();
         addActionMessage("Su sesión ha sido cerrada");
         return "success";

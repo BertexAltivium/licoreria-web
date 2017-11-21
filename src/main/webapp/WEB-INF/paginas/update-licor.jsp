@@ -7,7 +7,7 @@
 	<s:form action="editLicor" namespace="/socios" method="POST" class="form-signin">
 		<span id="reauth-email" class="reauth-email"></span>
 		<s:fielderror/>
-		<s:textfield name="licor.id" class="form-control" placeholder="ID"></s:textfield>
+		<s:textfield name="licor.id" class="form-control" placeholder="ID" type="hidden"></s:textfield>
 		
 		<s:textfield name="licor.tipo" class="form-control" placeholder="Tipo"></s:textfield>
 		<s:textfield name="licor.marca" class="form-control" placeholder="Marca" ></s:textfield>
