@@ -157,5 +157,21 @@
 			</result>
 			<result name="input" type="tiles">licor.edit.tiles</result>
 		</action>
+
+		<action name="deleteLicor" method="deleteLicor"
+			class="com.forever.tesistas.web.action.AlcoholAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showInicio</param>
+				<param name="namespace">/socios</param>
+			</result>
+			<result name="nothingToDelete" type="redirectAction">
+				<param name="actionName">showInicio</param>
+				<param name="namespace">/socios</param>
+			</result>
+			
+			
+		</action>
+
+
 	</package>
 </struts>

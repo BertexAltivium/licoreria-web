@@ -36,5 +36,9 @@ public class LicorDAO extends BaseHibernateDAO {
 	public void updateLicor(Licor licor) {
 		super.saveOrUpdate(licor);
 	}
+	
+	public void deleteLicor(Licor licor) {
+		super.delete(licor);
+	}
 
 }

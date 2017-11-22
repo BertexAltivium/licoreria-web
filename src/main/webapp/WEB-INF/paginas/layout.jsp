@@ -26,12 +26,11 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Librer&iacute;a en L&iacute;nea</a>
+				<a class="navbar-brand" href="#">Licoreria en L&iacute;nea</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url action="showInicio" namespace="/socios"/>">Home</a></li>
-					<li><a href="#">Contacto</a></li>
 					<s:if test="admin">
 						<li><a
 							href="<s:url action="showAddLicorForm" namespace="/socios"/>">Agregar

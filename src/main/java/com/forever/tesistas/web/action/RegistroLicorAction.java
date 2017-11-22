@@ -53,6 +53,17 @@ public class RegistroLicorAction extends BaseAction {
 		return "success";
 	}
 	
+	public String deleteLicor() {
+		if (licor == null || licor.getId() == null) {
+			return "nothingToDelete";
+		}
+		else {
+			LicorDAO licorDAO = new LicorDAO();
+			licorDAO.deleteLicor(licor);
+			return "success";
+		}
+	}
+	
 
 	/**
 	 * @return the licor

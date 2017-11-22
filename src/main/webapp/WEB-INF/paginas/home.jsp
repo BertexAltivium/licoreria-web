@@ -43,7 +43,10 @@
 						href="<s:url action="showEditLicorForm" namespace="/socios">
 							<s:param name="licorId">${licor.id}</s:param>
 						</s:url>">Editar</a></td>
-					<td>Eliminar</td>
+					<td><a
+						href="<s:url action="deleteLicor" namespace="/socios">
+							<s:param name="licorId">${licor.id}</s:param>
+						</s:url>">Eliminar</a></td>
 				</s:if>
 			</tr>
 
