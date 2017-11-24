@@ -18,6 +18,7 @@
 			la forma de inicio de sesion al usuario -->
 		<action name="showLoginForm" method="showLoginForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<!-- <result name="success">/login2.jsp</result> -->
 			<result name="success">/login.jsp</result>
 		</action>
 
@@ -41,6 +42,7 @@
 		<action name="showRegisterForm" method="showRegisterForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">
 			<result name="success">/registro.jsp</result>
+			<!-- <result name="success">/registro2.jsp</result> -->
 		</action>
 
 		<action name="registro" method="registroUsuario"

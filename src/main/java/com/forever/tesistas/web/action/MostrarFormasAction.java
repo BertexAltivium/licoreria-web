@@ -58,6 +58,10 @@ public class MostrarFormasAction extends BaseAction {
 	}
 
 	public String showChangePasswordForm() {
+		admin = (Boolean) getSession().get("isAdmin");
+		if (admin == null) {
+			admin = false;
+		}
 		logger.info("showChangePasswordForm()");
 		cambioPassword = new CambioPassword();
 		return "success";

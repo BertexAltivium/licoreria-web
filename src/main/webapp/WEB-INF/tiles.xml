@@ -4,6 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
     <definition name="baseLayout" template="/WEB-INF/paginas/layout.jsp">
+    <!-- <definition name="baseLayout" template="/WEB-INF/paginas/layout2.jsp"> -->
         <put-attribute name="title" value="" />
         <put-attribute name="body" value="" />
     </definition>
@@ -20,7 +21,7 @@
     </definition>
     
     <definition name="licor.add.tiles" extends="baseLayout">
-        <put-attribute name="title" value="Alta libro" />
+        <put-attribute name="title" value="Alta Licor" />
         <put-attribute name="body" value="/WEB-INF/paginas/alta-licor.jsp" />
     </definition>
     

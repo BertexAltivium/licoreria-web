@@ -16,6 +16,49 @@
       	<strong><s:actionerror/></strong>
    	</div>
 </s:if>
+
+<table class="table">
+	<thead>
+		<tr>
+
+			<th>Sucursal</th>
+
+			<th>Direccion</th>
+
+			<s:if test="admin">
+
+				<th>Editar</th>
+
+				<th>Eliminar</th>
+
+			</s:if>
+
+		</tr>
+
+	</thead>
+
+	<s:iterator value="sucursales" var="sucursal">
+		<tbody>
+
+			<tr>
+
+				<td><s:property value="nombre" /></td>
+
+				<td><s:property value="address" /></td>
+
+				<s:if test="admin">
+					<td>Editar</td>
+
+					<td>Eliminar</td>
+
+				</s:if>
+
+			</tr>
+		</tbody>
+	</s:iterator>
+</table>
+
+
 <!--
 <h4>Bienvenido ${sessionScope.nombreCompleto}</h4>
 -->

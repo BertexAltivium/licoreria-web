@@ -40,6 +40,9 @@
 							href="<s:url action="showSucursalForm" namespace="/socios"/>">Agregar
 								Sucursal</a></li>
 						<li><a
+							href="<s:url action="showSucursalList" namespace="/socios"/>">Lista
+								Sucursales</a></li>
+						<li><a
 							href="<s:url action="showDistribuidorForm" namespace="/socios"/>">Agregar
 								Distribuidor</a></li>
 						<li><a
