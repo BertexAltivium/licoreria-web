@@ -1,5 +1,6 @@
 package com.forever.tesistas.web.hibernate;
 // default package
+
 // Generated Nov 16, 2017 7:53:30 PM by Hibernate Tools 4.3.5.Final
 
 import java.util.Date;
@@ -23,12 +24,12 @@ public class Address implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
 	private Integer id;
 	private String numero;
 	private String calle;
 	private String colonia;
 	private Date createTime;
-
 
 	public Address() {
 	}
@@ -96,6 +97,10 @@ public class Address implements java.io.Serializable {
 		this.createTime = createTime;
 	}
 
-
+	@Override
+	public String toString() {
+		return "Address [id=" + id + ", numero=" + numero + ", calle=" + calle + ", colonia=" + colonia
+				+ ", createTime=" + createTime + "]";
+	}
 
 }

@@ -34,7 +34,6 @@ public class MostrarFormasAction extends BaseAction {
 	private List<Licor> licores;
 	private Licor licor;
 	private Boolean logged;
-	
 
 	/**
 	 * Acción por defecto que preparará la forma web para el inicio de sesión del
@@ -159,14 +158,9 @@ public class MostrarFormasAction extends BaseAction {
 	 * Inicia seccion correspondiente a Distribuidores
 	 */
 	public String showDistribuidorForm() {
-		admin = (Boolean) getSession().get("isAdmin");
-		if (admin == null) {
-			admin = false;
-			return "noAdmin";
-		}
+		admin = true;
 		logger.info("showDistribuidorForm()");
 		logger.debug("Instanciando POJO para la forma distribuidor");
-		RegistroDistribuidor registroDistribuidor = new RegistroDistribuidor();
 		AddressDAO addressDAO = new AddressDAO();
 		direcciones = (List<Address>) (Object) addressDAO.getAllAddress();
 		// logger.info("Cantidad de objetos recuperados: "+direcciones.size());
@@ -255,11 +249,11 @@ public class MostrarFormasAction extends BaseAction {
 	public void setLicor(Licor licor) {
 		this.licor = licor;
 	}
-	
+
 	public Boolean getLogged() {
 		return logged;
 	}
-	
+
 	public void setLogged(Boolean logged) {
 		this.logged = logged;
 	}
