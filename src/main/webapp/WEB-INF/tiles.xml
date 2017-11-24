@@ -3,40 +3,45 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
-    <definition name="baseLayout" template="/WEB-INF/paginas/layout.jsp">
-    <!-- <definition name="baseLayout" template="/WEB-INF/paginas/layout2.jsp"> -->
-        <put-attribute name="title" value="" />
-        <put-attribute name="body" value="" />
-    </definition>
-    
-    <!-- Pagina de home que hereda la configuracion de baseLayout-->
-    <definition name="home.tiles" extends="baseLayout">
-        <put-attribute name="title" value="Licoreria en Linea" />
-        <put-attribute name="body" value="/WEB-INF/paginas/home.jsp" />
-    </definition>
-    
-    <definition name="cambiopassword.tiles" extends="baseLayout">
-        <put-attribute name="title" value="Cambio de password" />
-        <put-attribute name="body" value="/WEB-INF/paginas/cambio-passwd.jsp" />
-    </definition>
-    
-    <definition name="licor.add.tiles" extends="baseLayout">
-        <put-attribute name="title" value="Alta Licor" />
-        <put-attribute name="body" value="/WEB-INF/paginas/alta-licor.jsp" />
-    </definition>
-    
-    <definition name="altadireccion.tiles" extends="baseLayout">
-        <put-attribute name="title" value="Alta direccion" />
-        <put-attribute name="body" value="/WEB-INF/paginas/alta-direccion.jsp" />
-    </definition>
+	<definition name="baseLayout" template="/WEB-INF/paginas/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="body" value="" />
+	</definition>
 
-    <definition name="altasucursal.tiles" extends="baseLayout">
-        <put-attribute name="title" value="Alta sucursal" />
-        <put-attribute name="body" value="/WEB-INF/paginas/alta-sucursal.jsp" />
-    </definition>
+	<!-- Pagina de home que hereda la configuracion de baseLayout -->
+	<definition name="home.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Licoreria en Linea" />
+		<put-attribute name="body" value="/WEB-INF/paginas/home.jsp" />
+	</definition>
 
-    <definition name="altadistribuidor.tiles" extends="baseLayout">
-        <put-attribute name="title" value="Alta distribuidor" />
-        <put-attribute name="body" value="/WEB-INF/paginas/alta-distribuidor.jsp" />
-    </definition>
+	<definition name="cambiopassword.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Cambio de password" />
+		<put-attribute name="body" value="/WEB-INF/paginas/cambio-passwd.jsp" />
+	</definition>
+
+	<definition name="licor.add.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Alta libro" />
+		<put-attribute name="body" value="/WEB-INF/paginas/alta-licor.jsp" />
+	</definition>
+	<definition name="licor.edit.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Alta libro" />
+		<put-attribute name="body" value="/WEB-INF/paginas/update-licor.jsp" />
+	</definition>
+
+	<definition name="altadireccion.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Alta direccion" />
+		<put-attribute name="body"
+			value="/WEB-INF/paginas/alta-direccion.jsp" />
+	</definition>
+
+	<definition name="altasucursal.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Alta sucursal" />
+		<put-attribute name="body" value="/WEB-INF/paginas/alta-sucursal.jsp" />
+	</definition>
+
+	<definition name="altadistribuidor.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Alta distribuidor" />
+		<put-attribute name="body"
+			value="/WEB-INF/paginas/alta-distribuidor.jsp" />
+	</definition>
 </tiles-definitions>

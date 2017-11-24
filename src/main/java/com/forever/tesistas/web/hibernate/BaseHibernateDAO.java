@@ -82,6 +82,24 @@ public abstract class BaseHibernateDAO implements IBaseHibernateDAO {
             session.close();
         }
     }
+    
+
+    protected void delete(Object obj) throws RuntimeException {
+        logger.debug("save()");
+        try {
+            startOperation();
+            session.delete(obj);
+            tx.commit();
+        } catch (HibernateException e) {
+            logger.error(e);
+            tx.rollback();
+            throw new RuntimeException(e);
+        } finally {
+            logger.debug("Cerrando la conexión");
+            session.clear();
+            session.close();
+        }
+    }
 
     protected void startOperation() throws HibernateException {
         logger.debug("startOperation()");

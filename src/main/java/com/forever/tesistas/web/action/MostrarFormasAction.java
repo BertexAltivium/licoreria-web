@@ -1,18 +1,18 @@
 package com.forever.tesistas.web.action;
 
 import java.util.List;
+
 import org.apache.log4j.Logger;
 
-import com.forever.tesistas.web.hibernate.Usuario;
 import com.forever.tesistas.web.hibernate.Address;
 import com.forever.tesistas.web.hibernate.AddressDAO;
+import com.forever.tesistas.web.hibernate.Licor;
+import com.forever.tesistas.web.hibernate.LicorDAO;
+import com.forever.tesistas.web.hibernate.Usuario;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
-import com.forever.tesistas.web.pojo.RegistroSucursal;
 import com.forever.tesistas.web.pojo.RegistroDistribuidor;
-
-
-
+import com.forever.tesistas.web.pojo.RegistroSucursal;
 
 /**
  * @author Gabriel Gonzalez
@@ -29,7 +29,11 @@ public class MostrarFormasAction extends BaseAction {
 	private Usuario usuario;
 	private CambioPassword cambioPassword;
 	private Boolean admin;
+	private Integer licorId;
 	private List<Address> direcciones;
+	private List<Licor> licores;
+	private Licor licor;
+	private Boolean logged;
 
 	/**
 	 * Acción por defecto que preparará la forma web para el inicio de sesión del
@@ -57,6 +61,22 @@ public class MostrarFormasAction extends BaseAction {
 		return "success";
 	}
 
+	public String showEditLicorForm() {
+		logger.info("showEditAlcohol");
+
+		if (licorId != null) {
+			LicorDAO licorDAO = new LicorDAO();
+			licor = licorDAO.getById(licorId);
+			logger.info("licor " + licor);
+		}
+		admin = (Boolean) getSession().get("isAdmin");
+		if (admin == null) {
+			admin = false;
+			return "noAdmin";
+		}
+		return "success";
+	}
+
 	public String showChangePasswordForm() {
 		admin = (Boolean) getSession().get("isAdmin");
 		if (admin == null) {
@@ -68,14 +88,19 @@ public class MostrarFormasAction extends BaseAction {
 	}
 
 	public String showHome() {
-
+		logger.info("showHome");
+		LicorDAO licorDAO = new LicorDAO();
+		licores = licorDAO.getAllLicors();
+		logger.info("hay " + licores.size() + " licores");
+		logger.info("licores" + licores);
 		admin = (Boolean) getSession().get("isAdmin");
+		logged = (Boolean) getSession().get("logged");
 		if (admin == null) {
 			admin = false;
 		}
 		return "success";
 	}
-	
+
 	public String showAddLicorForm() {
 		admin = (Boolean) getSession().get("isAdmin");
 		if (admin == null) {
@@ -91,70 +116,70 @@ public class MostrarFormasAction extends BaseAction {
 			admin = false;
 			return "noAdmin";
 		}
-        return "success";
-    }
+		return "success";
+	}
 
-    /**
-     * Inicia seccion correspondiente a Sucursales
-   	*/
-    public String showSucursalForm() {
-        admin = (Boolean) getSession().get("isAdmin");
+	/**
+	 * Inicia seccion correspondiente a Sucursales
+	 */
+	public String showSucursalForm() {
+		admin = (Boolean) getSession().get("isAdmin");
 		if (admin == null) {
 			admin = false;
 			return "noAdmin";
 		}
-        logger.info("showSucursalForm()");
-        logger.debug("Instanciando POJO para la forma sucursal");
-        RegistroSucursal registroSucursal = new RegistroSucursal();
-        AddressDAO addressDAO = new AddressDAO();
-		direcciones = (List<Address>)(Object)addressDAO.getAllAddress();
-        //logger.info("Cantidad de objetos recuperados: "+direcciones.size());
-        //logger.info("direccion 1:"+direcciones.get(0).getCalle());
-        
-        return "success";
-    }
-    
-    /**
-     * @return the address list
-     */
-    public List<Address> getDirecciones() {
-        return direcciones;
-    }
+		logger.info("showSucursalForm()");
+		logger.debug("Instanciando POJO para la forma sucursal");
+		RegistroSucursal registroSucursal = new RegistroSucursal();
+		AddressDAO addressDAO = new AddressDAO();
+		direcciones = (List<Address>) (Object) addressDAO.getAllAddress();
+		// logger.info("Cantidad de objetos recuperados: "+direcciones.size());
+		// logger.info("direccion 1:"+direcciones.get(0).getCalle());
 
-    /**
-     * @param direcciones the List<Address> to set
-     */
-    public void setDirecciones(List<Address> direcciones) {
-        this.direcciones = direcciones;
-    }
+		return "success";
+	}
 
-    /*
-    * Termina seccion correspondiente a Sucursales
-    */
+	/**
+	 * @return the address list
+	 */
+	public List<Address> getDirecciones() {
+		return direcciones;
+	}
 
-     /**
-     * Inicia seccion correspondiente a Distribuidores
-   	*/
-    public String showDistribuidorForm() {
-        admin = (Boolean) getSession().get("isAdmin");
-		if (admin == null) {
+	/**
+	 * @param direcciones
+	 *            the List<Address> to set
+	 */
+	public void setDirecciones(List<Address> direcciones) {
+		this.direcciones = direcciones;
+	}
+
+	/*
+	 * Termina seccion correspondiente a Sucursales
+	 */
+
+	/**
+	 * Inicia seccion correspondiente a Distribuidores
+	 */
+	public String showDistribuidorForm() {
+		if (!isAdmin()) {
 			admin = false;
 			return "noAdmin";
 		}
-        logger.info("showDistribuidorForm()");
-        logger.debug("Instanciando POJO para la forma distribuidor");
-        RegistroDistribuidor registroDistribuidor = new RegistroDistribuidor();
-        AddressDAO addressDAO = new AddressDAO();
-		direcciones = (List<Address>)(Object)addressDAO.getAllAddress();
-        //logger.info("Cantidad de objetos recuperados: "+direcciones.size());
-        //logger.info("direccion 1:"+direcciones.get(0).getCalle());
-        
-        return "success";
-    }
+		admin = true;
+		logger.info("showDistribuidorForm()");
+		logger.debug("Instanciando POJO para la forma distribuidor");
+		AddressDAO addressDAO = new AddressDAO();
+		direcciones = (List<Address>) (Object) addressDAO.getAllAddress();
+		// logger.info("Cantidad de objetos recuperados: "+direcciones.size());
+		// logger.info("direccion 1:"+direcciones.get(0).getCalle());
 
-    /*
-    * Termina seccion Distribuidores
-    */
+		return "success";
+	}
+
+	/*
+	 * Termina seccion Distribuidores
+	 */
 
 	/**
 	 * @return the login
@@ -207,6 +232,38 @@ public class MostrarFormasAction extends BaseAction {
 
 	public void setAdmin(boolean admin) {
 		this.admin = admin;
+	}
+
+	public List<Licor> getLicores() {
+		return licores;
+	}
+
+	public void setLicores(List<Licor> licores) {
+		this.licores = licores;
+	}
+
+	public Integer getLicorId() {
+		return licorId;
+	}
+
+	public void setLicorId(Integer licorId) {
+		this.licorId = licorId;
+	}
+
+	public Licor getLicor() {
+		return licor;
+	}
+
+	public void setLicor(Licor licor) {
+		this.licor = licor;
+	}
+
+	public Boolean getLogged() {
+		return logged;
+	}
+
+	public void setLogged(Boolean logged) {
+		this.logged = logged;
 	}
 
 }

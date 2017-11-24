@@ -26,12 +26,11 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">Librer&iacute;a en L&iacute;nea</a>
+				<a class="navbar-brand" href="#">Licoreria en L&iacute;nea</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
 					<li><a href="<s:url action="showInicio" namespace="/socios"/>">Home</a></li>
-					<li><a href="#">Contacto</a></li>
 					<s:if test="admin">
 						<li><a
 							href="<s:url action="showAddLicorForm" namespace="/socios"/>">Agregar
@@ -56,8 +55,17 @@
 					<li><a
 						href="<s:url action="showCambioPasswdForm" namespace="/socios"/>">Cambio
 							contraseña</a></li>
-					<li><a href="<s:url action="logout" namespace="/socios"/>">Cerrar
-							Sesi&oacute;n</a></li>
+
+					<s:if test="logged">
+						<li><a href="<s:url action="logout" namespace="/socios"/>">Cerrar
+								Sesi&oacute;n</a></li>
+					</s:if>
+					<s:if test="!logged">
+											<li><a href="<s:url action="logout" namespace="/socios"/>">Iniciar
+								Sesi&oacute;n</a></li>
+					</s:if>
+
+
 				</ul>
 			</div>
 			<!--/.nav-collapse -->
