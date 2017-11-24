@@ -158,6 +158,10 @@ public class MostrarFormasAction extends BaseAction {
 	 * Inicia seccion correspondiente a Distribuidores
 	 */
 	public String showDistribuidorForm() {
+		if (!isAdmin()) {
+			admin = false;
+			return "noAdmin";
+		}
 		admin = true;
 		logger.info("showDistribuidorForm()");
 		logger.debug("Instanciando POJO para la forma distribuidor");

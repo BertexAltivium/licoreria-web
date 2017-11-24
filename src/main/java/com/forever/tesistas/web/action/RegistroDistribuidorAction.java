@@ -28,11 +28,11 @@ public class RegistroDistribuidorAction extends BaseAction {
 		logger.info("addDistribuidor()");
 		logger.info("Distribuidor a guardar: " + distribuidor);
 
-		AddressDAO direccionDAO = new AddressDAO();
-
-		Address direccion = direccionDAO.getAddressById(Integer.parseInt(idDireccion));
-		distribuidor.setAddress(direccion);
-
+//		AddressDAO direccionDAO = new AddressDAO();
+//
+//		Address direccion = direccionDAO.getAddressById(Integer.parseInt(idDireccion));
+//		distribuidor.setAddress(direccion);
+//
 		DistribuidorDAO distribuidorDAO = new DistribuidorDAO();
 		distribuidorDAO.saveDistribuidor(distribuidor);
 		logger.info("Distribuidor guardada exitosamente");
