@@ -35,20 +35,18 @@
 						<li><a
 							href="<s:url action="showAddLicorForm" namespace="/socios"/>">Agregar
 								Licor</a></li>
-						<li><a
-							href="<s:url action="showSucursalForm" namespace="/socios"/>">Agregar
-								Sucursal</a></li>
-						<li><a
-							href="<s:url action="showSucursalList" namespace="/socios"/>">Lista
-								Sucursales</a></li>
-						<li><a
-							href="<s:url action="showDistribuidorForm" namespace="/socios"/>">Agregar
-								Distribuidor</a></li>
-						<li><a
-							href="<s:url action="showDireccionForm" namespace="/socios"/>">Agregar
-								Direccion</a></li>
 
 					</s:if>
+
+					<li><a
+						href="<s:url action="showSucursalForm" namespace="/socios"/>">Agregar
+							Sucursal</a></li>
+					<li><a
+						href="<s:url action="showSucursalList" namespace="/socios"/>">Lista
+							Sucursales</a></li>
+					<li><a
+						href="<s:url action="showDistribuidores" namespace="/socios"/>">Distribuidores</a></li>
+
 
 
 
@@ -61,7 +59,7 @@
 								Sesi&oacute;n</a></li>
 					</s:if>
 					<s:if test="!logged">
-											<li><a href="<s:url action="logout" namespace="/socios"/>">Iniciar
+						<li><a href="<s:url action="logout" namespace="/socios"/>">Iniciar
 								Sesi&oacute;n</a></li>
 					</s:if>
 

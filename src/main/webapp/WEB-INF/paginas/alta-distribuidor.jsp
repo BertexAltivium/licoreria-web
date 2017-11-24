@@ -4,7 +4,7 @@
 <%@ taglib prefix="s" uri="/struts-tags" %>
 <div class="input-group">
 	<h3>Registro de Distribuidor</h3>
-	<s:form action="distribuidor" namespace="/socios" method="POST" class="form-signin">
+	<s:form action="addDistribuidor" namespace="/socios" method="POST" class="form-signin">
 		<span id="reauth-email" class="reauth-email"></span>
 		<s:fielderror/>
 		<s:textfield name="distribuidor.nombre" class="form-control" placeholder="Nombre"></s:textfield>

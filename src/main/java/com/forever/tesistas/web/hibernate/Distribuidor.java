@@ -63,7 +63,7 @@ public class Distribuidor implements java.io.Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "address_id")
 	@Cascade({CascadeType.ALL})
 	public Address getAddress() {

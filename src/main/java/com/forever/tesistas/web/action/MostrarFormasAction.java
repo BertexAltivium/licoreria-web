@@ -6,12 +6,13 @@ import org.apache.log4j.Logger;
 
 import com.forever.tesistas.web.hibernate.Address;
 import com.forever.tesistas.web.hibernate.AddressDAO;
+import com.forever.tesistas.web.hibernate.Distribuidor;
+import com.forever.tesistas.web.hibernate.DistribuidorDAO;
 import com.forever.tesistas.web.hibernate.Licor;
 import com.forever.tesistas.web.hibernate.LicorDAO;
 import com.forever.tesistas.web.hibernate.Usuario;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
-import com.forever.tesistas.web.pojo.RegistroDistribuidor;
 import com.forever.tesistas.web.pojo.RegistroSucursal;
 
 /**
@@ -32,6 +33,7 @@ public class MostrarFormasAction extends BaseAction {
 	private Integer licorId;
 	private List<Address> direcciones;
 	private List<Licor> licores;
+	private List<Distribuidor> distribuidores;
 	private Licor licor;
 	private Boolean logged;
 
@@ -161,6 +163,16 @@ public class MostrarFormasAction extends BaseAction {
 	/**
 	 * Inicia seccion correspondiente a Distribuidores
 	 */
+	public String showDistribuidorList() {
+		logger.info("showDistribuidorList");
+		DistribuidorDAO distribuidorDAO = new DistribuidorDAO();
+		distribuidores = distribuidorDAO.getAllDistribuidores();
+		logger.info(distribuidores);
+		admin = isAdmin();
+		logged = (Boolean) getSession().get("logged");
+		return "success";
+	}
+
 	public String showDistribuidorForm() {
 		if (!isAdmin()) {
 			admin = false;
@@ -265,5 +277,12 @@ public class MostrarFormasAction extends BaseAction {
 	public void setLogged(Boolean logged) {
 		this.logged = logged;
 	}
+	
+	public List<Distribuidor>  getDistribuidores() {
+		return distribuidores;
+	}
 
+	public void setDistribuidores(List<Distribuidor> distribuidores) {
+		this.distribuidores = distribuidores;
+	}
 }

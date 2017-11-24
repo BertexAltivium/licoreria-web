@@ -129,6 +129,12 @@
 			<result name="input" type="tiles">altasucursal.tiles</result>
 		</action>
 		<!-- Seccion: Distribuidor -->
+		<action name="showDistribuidores" method="showDistribuidorList"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success" type="tiles">distribuidores.list.tiles</result>
+		</action>
+
+
 		<action name="showDistribuidorForm" method="showDistribuidorForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">
 			<result name="success" type="tiles">altadistribuidor.tiles</result>
@@ -136,7 +142,7 @@
 			</result>
 		</action>
 
-		<action name="distribuidor" method="addDistribuidor"
+		<action name="addDistribuidor" method="addDistribuidor"
 			class="com.forever.tesistas.web.action.RegistroDistribuidorAction">
 			<result name="success" type="redirectAction">
 				<param name="actionName">showDistribuidorForm</param>
