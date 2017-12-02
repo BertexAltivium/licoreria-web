@@ -17,7 +17,7 @@
 <h4>Bienvenido ${sessionScope.nombreCompleto}</h4>
 
 <s:if test="admin">
-	<button class="btn">
+	<button class="btn btn-default">
 		<a href="<s:url action="showDistribuidorForm" namespace="/socios" />" >Agregar Distribuidor</a>
 	</button>
 </s:if>
@@ -55,8 +55,8 @@
 							<s:param name="distribuidorId">${distribuidor.id}</s:param>
 						</s:url>">Editar</a></td>
 					<td><a
-						href="<s:url action="deleteLicor" namespace="/socios">
-							<s:param name="distrobuidorId">${licor.id}</s:param>
+						href="<s:url action="deleteDistribuidor" namespace="/socios">
+							<s:param name="distribuidorId">${distribuidor.id}</s:param>
 						</s:url>">Eliminar</a></td>
 				</s:if>
 			</tr>

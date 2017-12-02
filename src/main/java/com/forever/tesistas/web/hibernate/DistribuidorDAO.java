@@ -24,4 +24,8 @@ public class DistribuidorDAO extends BaseHibernateDAO {
 		Criteria criteria = getSession().createCriteria(Distribuidor.class).add(Restrictions.eq("id", id.intValue()));
 		return (Distribuidor) criteria.uniqueResult();
 	}
+	
+	public void deleteDistribuidor(Distribuidor distribuidor) {
+		super.delete(distribuidor);
+	}
 }

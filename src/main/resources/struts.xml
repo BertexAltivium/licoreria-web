@@ -158,6 +158,19 @@
 			<result name="noAdmin" type="redirectAction">showInicio
 			</result>
 		</action>
+		
+		<action name="deleteDistribuidor" method="deleteDistribuidor"
+			class="com.forever.tesistas.web.action.DistribuidorAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showDistribuidores</param>
+				<param name="namespace">/socios</param>
+			</result>
+			<result name="nothingToDelete" type="redirectAction">
+				<param name="actionName">showDistribuidores</param>
+				<param name="namespace">/socios</param>
+			</result>
+		</action>
+		
 
 		<action name="showEditLicorForm" method="showEditLicorForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">
