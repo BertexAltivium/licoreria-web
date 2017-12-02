@@ -17,6 +17,7 @@ import com.forever.tesistas.web.pojo.RegistroSucursal;
 
 /**
  * @author Gabriel Gonzalez
+ * @author bertex
  */
 public class MostrarFormasAction extends BaseAction {
 	/**
@@ -30,11 +31,17 @@ public class MostrarFormasAction extends BaseAction {
 	private Usuario usuario;
 	private CambioPassword cambioPassword;
 	private Boolean admin;
+	private boolean edit = false;
+
 	private Integer licorId;
+	private Integer distribuidorId;
+
 	private List<Address> direcciones;
 	private List<Licor> licores;
 	private List<Distribuidor> distribuidores;
 	private Licor licor;
+	private Distribuidor distribuidor;
+
 	private Boolean logged;
 
 	/**
@@ -161,7 +168,7 @@ public class MostrarFormasAction extends BaseAction {
 	 */
 
 	/**
-	 * Inicia seccion correspondiente a Distribuidores
+	 * Inicia sección correspondiente a Distribuidores
 	 */
 	public String showDistribuidorList() {
 		logger.info("showDistribuidorList");
@@ -174,15 +181,28 @@ public class MostrarFormasAction extends BaseAction {
 	}
 
 	public String showDistribuidorForm() {
-		if (!isAdmin()) {
+		logger.info("showDistribuidorForm()");
+		admin = isAdmin();
+		logger.info("admin: " + admin);
+
+		if (!admin) {
+
+			return "noAdmin";
+		}
+
+		if (distribuidorId != null) {
+			edit = true;
+			DistribuidorDAO distribuidorDAO = new DistribuidorDAO();
+			distribuidor = distribuidorDAO.getById(distribuidorId);
+			logger.info("Distribuidor " + distribuidor);
+		}
+		admin = (Boolean) getSession().get("isAdmin");
+		if (admin == null) {
 			admin = false;
 			return "noAdmin";
 		}
-		admin = true;
-		logger.info("showDistribuidorForm()");
+
 		logger.debug("Instanciando POJO para la forma distribuidor");
-		AddressDAO addressDAO = new AddressDAO();
-		direcciones = (List<Address>) (Object) addressDAO.getAllAddress();
 		// logger.info("Cantidad de objetos recuperados: "+direcciones.size());
 		// logger.info("direccion 1:"+direcciones.get(0).getCalle());
 
@@ -277,12 +297,37 @@ public class MostrarFormasAction extends BaseAction {
 	public void setLogged(Boolean logged) {
 		this.logged = logged;
 	}
-	
-	public List<Distribuidor>  getDistribuidores() {
+
+	public Integer getDistribuidorId() {
+		return distribuidorId;
+	}
+
+	public void setDistribuidorId(Integer distribuidorId) {
+		this.distribuidorId = distribuidorId;
+	}
+
+	public List<Distribuidor> getDistribuidores() {
 		return distribuidores;
 	}
 
 	public void setDistribuidores(List<Distribuidor> distribuidores) {
 		this.distribuidores = distribuidores;
 	}
+
+	public Distribuidor getDistribuidor() {
+		return distribuidor;
+	}
+
+	public void setDistribuidor(Distribuidor distribuidor) {
+		this.distribuidor = distribuidor;
+	}
+
+	public boolean isEdit() {
+		return edit;
+	}
+
+	public void setEdit(boolean edit) {
+		this.edit = edit;
+	}
+
 }

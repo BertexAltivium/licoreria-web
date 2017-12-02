@@ -7,6 +7,7 @@
 	<s:form action="addDistribuidor" namespace="/socios" method="POST" class="form-signin">
 		<span id="reauth-email" class="reauth-email"></span>
 		<s:fielderror/>
+		<s:textfield name="distribuidor.id" class="form-control" placeholder="ID" type="hidden"></s:textfield>
 		<s:textfield name="distribuidor.nombre" class="form-control" placeholder="Nombre"></s:textfield>
 		<%-- Procesamiento del catalogo de generos como un select --%>
 		<label>Dirección</label>
@@ -16,7 +17,13 @@
 
 	
 		<br/> 
-		<button class="btn btn-primary"
-			type="submit">Registrar Distribuidor</button>
+		
+		<s:if test="edit">
+			<button class="btn btn-primary" type="submit">Actualizar Distribuidor</button>
+		</s:if>
+		<s:if test="!edit">
+			<button class="btn btn-primary" type="submit">Registrar Distribuidor</button>
+		</s:if>
+		
 	</s:form>			
 </div><!-- /card-container -->

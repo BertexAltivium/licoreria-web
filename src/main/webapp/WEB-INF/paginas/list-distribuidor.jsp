@@ -51,7 +51,7 @@
 				<s:if test="admin">
 
 					<td><a
-						href="<s:url action="showEditLicorForm" namespace="/socios">
+						href="<s:url action="showDistribuidorForm" namespace="/socios">
 							<s:param name="distribuidorId">${distribuidor.id}</s:param>
 						</s:url>">Editar</a></td>
 					<td><a

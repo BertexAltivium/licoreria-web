@@ -25,8 +25,7 @@ public class LicorDAO extends BaseHibernateDAO {
 	}
 
 	public Licor getById(Integer id) {
-		Criteria criteria = getSession().createCriteria(Licor.class).add(Restrictions.eq("id", id.intValue()));
-		return (Licor) criteria.uniqueResult();
+		return (Licor) findById(Licor.class, id);
 	}
 
 	public void saveLicor(Licor licor) {

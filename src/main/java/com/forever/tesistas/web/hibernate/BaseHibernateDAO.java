@@ -5,6 +5,7 @@ import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Restrictions;
 
 import java.io.Serializable;
 import java.util.List;
@@ -34,13 +35,9 @@ public abstract class BaseHibernateDAO implements IBaseHibernateDAO {
         return criteria.list();
     }
 
-    protected Object findById(Class<?> clazz, Object id) {
-        logger.debug("findById()");
-        Object obj = null;
-        startOperation();
-        obj = session.load(clazz, (Serializable) id);
-        tx.commit();
-        return obj;
+    protected Object findById(Class<?> clazz, Integer id) {
+		Criteria criteria = getSession().createCriteria(clazz).add(Restrictions.eq("id", id.intValue()));
+		return criteria.uniqueResult();
     }
 
     protected List<Object> findAll(Class<?> clazz) {

@@ -17,9 +17,6 @@ public class RegistroDistribuidorAction extends BaseAction {
 	private static final Logger logger = Logger.getLogger(RegistroDistribuidorAction.class);
 
 	private Distribuidor distribuidor;
-	// private String direccion;
-	// private String idAddressSeleccionado;
-
 
 	private String idDireccion;
 
@@ -28,13 +25,12 @@ public class RegistroDistribuidorAction extends BaseAction {
 		logger.info("addDistribuidor()");
 		logger.info("Distribuidor a guardar: " + distribuidor);
 
-//		AddressDAO direccionDAO = new AddressDAO();
-//
-//		Address direccion = direccionDAO.getAddressById(Integer.parseInt(idDireccion));
-//		distribuidor.setAddress(direccion);
-//
 		DistribuidorDAO distribuidorDAO = new DistribuidorDAO();
-		distribuidorDAO.saveDistribuidor(distribuidor);
+		if (distribuidor.getId() != null) {
+			distribuidorDAO.updateDistribuidor(distribuidor);
+		} else {
+			distribuidorDAO.saveDistribuidor(distribuidor);
+		}
 		logger.info("Distribuidor guardada exitosamente");
 
 		return "success";
@@ -52,7 +48,6 @@ public class RegistroDistribuidorAction extends BaseAction {
 
 	}
 
-
 	public Distribuidor getDistribuidor() {
 		return distribuidor;
 	}
@@ -68,7 +63,5 @@ public class RegistroDistribuidorAction extends BaseAction {
 	public void setIdDireccion(String idDireccion) {
 		this.idDireccion = idDireccion;
 	}
-
-
 
 }
