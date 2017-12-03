@@ -148,7 +148,7 @@ public class Producto implements java.io.Serializable {
     }
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "create_time", length = 19)
+    @Column(name = "create_time", length = 19, updatable = false)
     public Date getCreateTime() {
         return this.createTime;
     }

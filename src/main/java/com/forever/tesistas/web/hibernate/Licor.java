@@ -140,7 +140,7 @@ public class Licor implements java.io.Serializable {
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "create_time", length = 19, insertable = false)
+	@Column(name = "create_time", length = 19, insertable = false, updatable = false)
 	public Date getCreateTime() {
 		return this.createTime;
 	}

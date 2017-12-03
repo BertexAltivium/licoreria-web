@@ -11,6 +11,7 @@
 		<s:textfield name="distribuidor.nombre" class="form-control" placeholder="Nombre"></s:textfield>
 		<%-- Procesamiento del catalogo de generos como un select --%>
 		<label>Dirección</label>
+		<s:textfield name="distribuidor.address.id" class="form-control" placeholder="ID" type="hidden"></s:textfield>
 		<s:textfield name="distribuidor.address.numero" class="form-control" placeholder="numero"></s:textfield>
 		<s:textfield name="distribuidor.address.calle" class="form-control" placeholder="calle" ></s:textfield>
 		<s:textfield name="distribuidor.address.colonia" class="form-control" placeholder="colonia" ></s:textfield>
