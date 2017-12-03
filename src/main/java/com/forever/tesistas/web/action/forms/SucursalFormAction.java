@@ -14,8 +14,8 @@ public class SucursalFormAction extends BaseAction {
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger(SucursalFormAction.class);
 	private Boolean admin;
-	private boolean edit;
-	private boolean logged;
+	private boolean edit = false;
+	private boolean logged = false;
 	private Sucursal sucursal;
 	private List<Sucursal> sucursales;
 
@@ -37,7 +37,6 @@ public class SucursalFormAction extends BaseAction {
 		}
 		admin = (Boolean) getSession().get("isAdmin");
 
-
 		return "success";
 	}
 
@@ -46,12 +45,30 @@ public class SucursalFormAction extends BaseAction {
 		SucursalDAO sucursalDAO = new SucursalDAO();
 		sucursales = sucursalDAO.getAllSucursales();
 		admin = isAdmin();
-		SessionMap<String,Object> session = getSession();
+		SessionMap<String, Object> session = getSession();
 		Object objectSession = getSession().get("logged");
 		if (objectSession != null) {
 			logged = (Boolean) objectSession;
 		}
 		return "success";
+	}
+
+	public String deleteSucursal() {
+		logger.info("addSucursal()");
+
+		admin = isAdmin();
+		if (!admin) {
+			return "noAdmin";
+		}
+
+		SucursalDAO sucursalDAO = new SucursalDAO();
+		sucursal = sucursalDAO.getById(sucursalId);
+		if (sucursal == null || sucursal.getId() == null) {
+			return "nothingToDelete";
+		} else {
+			sucursalDAO.deleteSucursal(sucursal);
+			return "success";
+		}
 	}
 
 	public Sucursal getSucursal() {
@@ -78,4 +95,14 @@ public class SucursalFormAction extends BaseAction {
 		this.sucursalId = sucursalId;
 	}
 
+	public boolean isEdit() {
+		return edit;
+	}
+
+	public void setEdit(boolean edit) {
+		this.edit = edit;
+	}
+
+	
+	
 }

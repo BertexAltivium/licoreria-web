@@ -129,12 +129,26 @@
 		<action name="sucursal" method="addSucursal"
 			class="com.forever.tesistas.web.action.SucursalAction">
 			<result name="success" type="redirectAction">
-				<param name="actionName">showSucursalForm</param>
+				<param name="actionName">showSucursalList</param>
 				<param name="namespace">/socios</param>
 			</result>
 			<result name="noAdmin" type="redirectAction">showSucursalList</result>
 			<result name="input" type="tiles">altasucursal.tiles</result>
 		</action>
+
+		<action name="deleteSucursal" method="deleteSucursal"
+			class="com.forever.tesistas.web.action.forms.SucursalFormAction">
+			<result name="success" type="redirectAction">
+				<param name="actionName">showSucursalList</param>
+				<param name="namespace">/socios</param>
+			</result>
+			<result name="noAdmin" type="redirectAction">showSucursalList</result>
+			<result name="nothingToDelete" type="redirectAction">
+				<param name="actionName">showSucursalList</param>
+				<param name="namespace">/socios</param>
+			</result>
+		</action>
+
 		<!-- Seccion: Distribuidor -->
 		<action name="showDistribuidores" method="showDistribuidorList"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">

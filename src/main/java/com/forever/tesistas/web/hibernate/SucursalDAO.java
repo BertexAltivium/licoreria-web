@@ -21,6 +21,10 @@ public class SucursalDAO extends BaseHibernateDAO {
         super.saveOrUpdate(sucursal);
     }
     
+    public void deleteSucursal(Sucursal sucursal) {
+    	super.delete(sucursal);
+    }
+    
 	public Sucursal getById(Integer id) {
 		Criteria criteria = getSession().createCriteria(Sucursal.class).add(Restrictions.eq("id", id.intValue()));
 		return (Sucursal) criteria.uniqueResult();

@@ -18,7 +18,11 @@
 	
 	
 		<br/> <br/> <br/>
-		<button class="btn btn-lg btn-primary btn-block btn-signin"
-			type="submit">Registrar</button>
+		<s:if test="edit">
+			<button class="btn btn-primary" type="submit">Actualizar Sucursal</button>
+		</s:if>
+		<s:if test="!edit">
+			<button class="btn btn-primary" type="submit">Registrar Sucursal</button>
+		</s:if>
 	</s:form>			
 </div><!-- /card-container -->

@@ -56,11 +56,11 @@
 				<s:if test="admin">
 
 					<td><a
-						href="<s:url action="showDistribuidorForm" namespace="/socios">
+						href="<s:url action="showSucursalForm" namespace="/socios">
 							<s:param name="sucursalId">${sucursal.id}</s:param>
 						</s:url>">Editar</a></td>
 					<td><a
-						href="<s:url action="deleteDistribuidor" namespace="/socios">
+						href="<s:url action="deleteSucursal" namespace="/socios">
 							<s:param name="sucursalId">${sucursal.id}</s:param>
 						</s:url>">Eliminar</a></td>
 				</s:if>
