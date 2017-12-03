@@ -20,6 +20,11 @@ public class RegistroLicorAction extends BaseAction {
 		logger.info("addLicor()");
 
 		logger.info("Licor: " + licor);
+		
+		Boolean admin = isAdmin();
+		if (!admin) {
+			return "noAdmin";
+		}
 		LicorDAO licorDAO = new LicorDAO();
 		if (licor.getId()!= null) {
 			licorDAO.updateLicor(licor);
@@ -43,6 +48,11 @@ public class RegistroLicorAction extends BaseAction {
 
 		logger.info("Licor: " + licor);
 		logger.info("id as param" + licorId);
+		
+		Boolean admin = isAdmin();
+		if (!admin) {
+			return "noAdmin";
+		}
 		if (licor.getId()== null) {
 			licor.setId(licorId);
 		}

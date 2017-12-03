@@ -4,18 +4,14 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.forever.tesistas.web.hibernate.Address;
-import com.forever.tesistas.web.hibernate.AddressDAO;
 import com.forever.tesistas.web.hibernate.Distribuidor;
 import com.forever.tesistas.web.hibernate.DistribuidorDAO;
 import com.forever.tesistas.web.hibernate.Licor;
 import com.forever.tesistas.web.hibernate.LicorDAO;
 import com.forever.tesistas.web.hibernate.Sucursal;
-import com.forever.tesistas.web.hibernate.SucursalDAO;
 import com.forever.tesistas.web.hibernate.Usuario;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
-import com.forever.tesistas.web.pojo.RegistroSucursal;
 
 /**
  * @author Gabriel Gonzalez
@@ -37,7 +33,6 @@ public class MostrarFormasAction extends BaseAction {
 
 	private Integer licorId;
 	private Integer distribuidorId;
-	private Integer sucursalId;
 
 	private List<Licor> licores;
 	private List<Distribuidor> distribuidores;
@@ -131,7 +126,6 @@ public class MostrarFormasAction extends BaseAction {
 		return "success";
 	}
 
-
 	/**
 	 * Inicia sección correspondiente a Distribuidores
 	 */
@@ -148,10 +142,7 @@ public class MostrarFormasAction extends BaseAction {
 	public String showDistribuidorForm() {
 		logger.info("showDistribuidorForm()");
 		admin = isAdmin();
-		logger.info("admin: " + admin);
-
 		if (!admin) {
-
 			return "noAdmin";
 		}
 
@@ -293,15 +284,6 @@ public class MostrarFormasAction extends BaseAction {
 		this.edit = edit;
 	}
 
-
-	public Integer getSucursalId() {
-		return sucursalId;
-	}
-
-	public void setSucursalId(Integer sucursalId) {
-		this.sucursalId = sucursalId;
-	}
-
 	public Sucursal getSucursal() {
 		return sucursal;
 	}
@@ -309,7 +291,5 @@ public class MostrarFormasAction extends BaseAction {
 	public void setSucursal(Sucursal sucursal) {
 		this.sucursal = sucursal;
 	}
-	
-	
 
 }
