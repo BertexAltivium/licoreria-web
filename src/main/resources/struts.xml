@@ -115,13 +115,18 @@
 		</action>
 
 		<!-- Seccion: Sucursal -->
+		<action name="showSucursalList" method="showSucursalList"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success" type="tiles">sucursales.list.tiles</result>
+		</action>
+
 		<action name="showSucursalForm" method="showSucursalForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">
 			<result name="success" type="tiles">altasucursal.tiles</result>
 		</action>
 
 		<action name="sucursal" method="addSucursal"
-			class="com.forever.tesistas.web.action.RegistroSucursalAction">
+			class="com.forever.tesistas.web.action.SucursalAction">
 			<result name="success" type="redirectAction">
 				<param name="actionName">showSucursalForm</param>
 				<param name="namespace">/socios</param>
@@ -158,7 +163,7 @@
 			<result name="noAdmin" type="redirectAction">showInicio
 			</result>
 		</action>
-		
+
 		<action name="deleteDistribuidor" method="deleteDistribuidor"
 			class="com.forever.tesistas.web.action.DistribuidorAction">
 			<result name="success" type="redirectAction">
@@ -170,7 +175,7 @@
 				<param name="namespace">/socios</param>
 			</result>
 		</action>
-		
+
 
 		<action name="showEditLicorForm" method="showEditLicorForm"
 			class="com.forever.tesistas.web.action.MostrarFormasAction">

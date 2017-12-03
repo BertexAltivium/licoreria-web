@@ -10,6 +10,8 @@ import com.forever.tesistas.web.hibernate.Distribuidor;
 import com.forever.tesistas.web.hibernate.DistribuidorDAO;
 import com.forever.tesistas.web.hibernate.Licor;
 import com.forever.tesistas.web.hibernate.LicorDAO;
+import com.forever.tesistas.web.hibernate.Sucursal;
+import com.forever.tesistas.web.hibernate.SucursalDAO;
 import com.forever.tesistas.web.hibernate.Usuario;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
@@ -39,9 +41,11 @@ public class MostrarFormasAction extends BaseAction {
 	private List<Address> direcciones;
 	private List<Licor> licores;
 	private List<Distribuidor> distribuidores;
+	private List<Sucursal> sucursales;
 	private Licor licor;
 	private Distribuidor distribuidor;
 
+	
 	private Boolean logged;
 
 	/**
@@ -142,12 +146,19 @@ public class MostrarFormasAction extends BaseAction {
 		RegistroSucursal registroSucursal = new RegistroSucursal();
 		AddressDAO addressDAO = new AddressDAO();
 		direcciones = (List<Address>) (Object) addressDAO.getAllAddress();
-		// logger.info("Cantidad de objetos recuperados: "+direcciones.size());
-		// logger.info("direccion 1:"+direcciones.get(0).getCalle());
 
 		return "success";
 	}
 
+	public String showSucursalList() {
+		logger.info("showDistribuidorList");
+		SucursalDAO sucursalDAO = new SucursalDAO();
+		sucursales = sucursalDAO.getAllSucursales();
+		admin = isAdmin();
+		logged = (Boolean) getSession().get("logged");
+		return "success";
+	}
+	
 	/**
 	 * @return the address list
 	 */
@@ -330,4 +341,14 @@ public class MostrarFormasAction extends BaseAction {
 		this.edit = edit;
 	}
 
+	public List<Sucursal> getSucursales() {
+		return sucursales;
+	}
+
+	public void setSucursales(List<Sucursal> sucursales) {
+		this.sucursales = sucursales;
+	}
+
+	
+	
 }

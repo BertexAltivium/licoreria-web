@@ -1,19 +1,17 @@
 package com.forever.tesistas.web.hibernate;
 
+import java.util.List;
+
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 import com.forever.tesistas.web.pojo.RegistroSucursal;
 
 public class SucursalDAO extends BaseHibernateDAO {
-    /*
-    public Sucursal login(RegistroSucursal sucursal) {
-        Criteria criteria = getSession().createCriteria(Sucursal.class)
-                .add(Restrictions.eq("email", sucursal.getNombre()));
-                //.add(Restrictions.eq("password", login.getPassword()));
-        return (Sucursal) criteria.uniqueResult();
-    }
-    */
+
+	public List<Sucursal> getAllSucursales() {
+		return (List<Sucursal>) (Object) findAll(Sucursal.class);
+	}
 
     public void saveSucursal(Sucursal sucursal) {
         super.save(sucursal);

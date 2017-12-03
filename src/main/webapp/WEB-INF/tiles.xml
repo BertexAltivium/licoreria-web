@@ -44,6 +44,11 @@
 			value="/WEB-INF/paginas/list-distribuidor.jsp" />
 	</definition>
 
+	<definition name="sucursales.list.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Sucursales" />
+		<put-attribute name="body"
+			value="/WEB-INF/paginas/list-sucursales.jsp" />
+	</definition>
 
 
 	<definition name="altadistribuidor.tiles" extends="baseLayout">

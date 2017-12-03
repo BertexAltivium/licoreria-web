@@ -10,12 +10,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import org.hibernate.proxy.HibernateProxy;
 import org.hibernate.Hibernate;
 
-public class RegistroSucursalAction extends BaseAction{
+public class SucursalAction extends BaseAction{
 
 
 	private static final long serialVersionUID = 1L;
 
-	private static final Logger logger = Logger.getLogger(RegistroSucursalAction.class);
+	private static final Logger logger = Logger.getLogger(SucursalAction.class);
 	
 	private String nombre;
 	//private String direccion;
