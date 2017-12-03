@@ -15,6 +15,16 @@
 	</div>
 </s:if>
 
+<h4>Bienvenido ${sessionScope.nombreCompleto}</h4>
+
+<s:if test="admin">
+	<button class="btn btn-default">
+		<a href="<s:url action="showSucursalForm" namespace="/socios" />" >Agregar Sucursal</a>
+	</button>
+</s:if>
+
+
+
 <table class="table">
 	<thead>
 		<tr>

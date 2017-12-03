@@ -37,15 +37,14 @@ public class MostrarFormasAction extends BaseAction {
 
 	private Integer licorId;
 	private Integer distribuidorId;
+	private Integer sucursalId;
 
-	private List<Address> direcciones;
 	private List<Licor> licores;
 	private List<Distribuidor> distribuidores;
-	private List<Sucursal> sucursales;
 	private Licor licor;
 	private Distribuidor distribuidor;
+	private Sucursal sucursal;
 
-	
 	private Boolean logged;
 
 	/**
@@ -132,51 +131,6 @@ public class MostrarFormasAction extends BaseAction {
 		return "success";
 	}
 
-	/**
-	 * Inicia seccion correspondiente a Sucursales
-	 */
-	public String showSucursalForm() {
-		admin = (Boolean) getSession().get("isAdmin");
-		if (admin == null) {
-			admin = false;
-			return "noAdmin";
-		}
-		logger.info("showSucursalForm()");
-		logger.debug("Instanciando POJO para la forma sucursal");
-		RegistroSucursal registroSucursal = new RegistroSucursal();
-		AddressDAO addressDAO = new AddressDAO();
-		direcciones = (List<Address>) (Object) addressDAO.getAllAddress();
-
-		return "success";
-	}
-
-	public String showSucursalList() {
-		logger.info("showDistribuidorList");
-		SucursalDAO sucursalDAO = new SucursalDAO();
-		sucursales = sucursalDAO.getAllSucursales();
-		admin = isAdmin();
-		logged = (Boolean) getSession().get("logged");
-		return "success";
-	}
-	
-	/**
-	 * @return the address list
-	 */
-	public List<Address> getDirecciones() {
-		return direcciones;
-	}
-
-	/**
-	 * @param direcciones
-	 *            the List<Address> to set
-	 */
-	public void setDirecciones(List<Address> direcciones) {
-		this.direcciones = direcciones;
-	}
-
-	/*
-	 * Termina seccion correspondiente a Sucursales
-	 */
 
 	/**
 	 * Inicia sección correspondiente a Distribuidores
@@ -214,8 +168,6 @@ public class MostrarFormasAction extends BaseAction {
 		}
 
 		logger.debug("Instanciando POJO para la forma distribuidor");
-		// logger.info("Cantidad de objetos recuperados: "+direcciones.size());
-		// logger.info("direccion 1:"+direcciones.get(0).getCalle());
 
 		return "success";
 	}
@@ -341,14 +293,23 @@ public class MostrarFormasAction extends BaseAction {
 		this.edit = edit;
 	}
 
-	public List<Sucursal> getSucursales() {
-		return sucursales;
+
+	public Integer getSucursalId() {
+		return sucursalId;
 	}
 
-	public void setSucursales(List<Sucursal> sucursales) {
-		this.sucursales = sucursales;
+	public void setSucursalId(Integer sucursalId) {
+		this.sucursalId = sucursalId;
 	}
 
+	public Sucursal getSucursal() {
+		return sucursal;
+	}
+
+	public void setSucursal(Sucursal sucursal) {
+		this.sucursal = sucursal;
+	}
 	
 	
+
 }

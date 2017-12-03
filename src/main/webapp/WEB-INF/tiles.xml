@@ -34,10 +34,6 @@
 			value="/WEB-INF/paginas/alta-direccion.jsp" />
 	</definition>
 
-	<definition name="altasucursal.tiles" extends="baseLayout">
-		<put-attribute name="title" value="Alta sucursal" />
-		<put-attribute name="body" value="/WEB-INF/paginas/alta-sucursal.jsp" />
-	</definition>
 	<definition name="distribuidores.list.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Distribuidores" />
 		<put-attribute name="body"
@@ -49,7 +45,11 @@
 		<put-attribute name="body"
 			value="/WEB-INF/paginas/list-sucursales.jsp" />
 	</definition>
-
+	
+	<definition name="sucursal.alta.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Alta sucursal" />
+		<put-attribute name="body" value="/WEB-INF/paginas/alta-sucursal.jsp" />
+	</definition>
 
 	<definition name="altadistribuidor.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Alta distribuidor" />

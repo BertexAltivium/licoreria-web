@@ -7,14 +7,16 @@
 	<s:form action="sucursal" namespace="/socios" method="POST" class="form-signin">
 		<span id="reauth-email" class="reauth-email"></span>
 		<s:fielderror/>
-		<s:textfield name="nombre" class="form-control" placeholder="Nombre"></s:textfield>
+		<s:textfield name="sucursal.id" class="form-control" placeholder="ID" type="hidden"></s:textfield>
+		<s:textfield name="sucursal.nombre" class="form-control" placeholder="Nombre"></s:textfield>
 		<%-- Procesamiento del catalogo de generos como un select --%>
-		<select name="registroSucursal.direccion">
-			<option value="0">seleccione una direccion</option>
-			<c:forEach items="${direcciones}" var="direccion">
-				 <option value="${direccion.id}">${direccion.numero}, ${direccion.calle}, ${direccion.colonia}</option>
-			</c:forEach> 
-		</select>		
+		<label>Dirección</label>
+		<s:textfield name="sucursal.address.id" class="form-control" placeholder="ID" type="hidden"></s:textfield>
+		<s:textfield name="sucursal.address.numero" class="form-control" placeholder="numero"></s:textfield>
+		<s:textfield name="sucursal.address.calle" class="form-control" placeholder="calle" ></s:textfield>
+		<s:textfield name="sucursal.address.colonia" class="form-control" placeholder="colonia" ></s:textfield>	
+	
+	
 		<br/> <br/> <br/>
 		<button class="btn btn-lg btn-primary btn-block btn-signin"
 			type="submit">Registrar</button>
