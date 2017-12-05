@@ -107,12 +107,7 @@
 			<result name="noAdmin" type="redirectAction">showInicio
 			</result>
 		</action>
-		<action name="address" method="addAddress"
-			class="com.forever.tesistas.web.action.RegistroDireccionAction">
-			<result name="success" type="redirectAction">showDireccionForm</result>
-			<result name="input" type="tiles">altadireccion.tiles</result>
-			<!-- <result name="success" type="tiles">altadireccion.tiles</result> -->
-		</action>
+
 
 		<!-- Seccion: Sucursal -->
 		<action name="showSucursalList" method="showSucursalList"
