@@ -45,7 +45,7 @@
 
 			
 
-					<s:if test="logged">
+					<s:if test="#session.logged">
 						<li><a
 							href="<s:url action="showCambioPasswdForm" namespace="/socios"/>">Cambio
 								contraseña</a></li>

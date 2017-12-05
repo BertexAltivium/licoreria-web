@@ -11,8 +11,7 @@ public class AlcoholAction extends BaseAction {
 	private Integer licorId;
 	
 	public String deleteLicor() {
-		Boolean admin = isAdmin();
-		if (!admin) {
+		if (!isAdmin()) {
 			return "noAdmin";
 		}
 		LicorDAO licorDAO = new LicorDAO();

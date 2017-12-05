@@ -10,8 +10,7 @@ public class DistribuidorAction extends BaseAction {
 	private Integer distribuidorId;
 
 	public String deleteDistribuidor() {
-		Boolean admin = isAdmin();
-		if (!admin) {
+		if (!isAdmin()) {
 			return "noAdmin";
 		}
 

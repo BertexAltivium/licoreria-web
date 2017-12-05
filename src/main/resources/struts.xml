@@ -12,7 +12,7 @@
 				class="org.apache.struts2.views.tiles.TilesResult" />
 		</result-types>
 
-		<default-action-ref name="showLoginForm" />
+		<default-action-ref name="showInicio" />
 
 		<!-- Acción que unicamente preparara un pojo para ser enviado junto con 
 			la forma de inicio de sesion al usuario -->

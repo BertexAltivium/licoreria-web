@@ -29,7 +29,7 @@
 		<tr>
 			<th>Licor</th>
 			<th>Marca</th>
-			<s:if test="admin">
+			<s:if test="#session.isAdmin">
 				<th>Editar</th>
 				<th>Eliminar</th>
 			</s:if>
@@ -41,7 +41,7 @@
 			<tr>
 				<td><s:property value="tipo" /></td>
 				<td><s:property value="marca" /></td>
-				<s:if test="admin">
+				<s:if test="#session.isAdmin">
 
 					<td><a
 						href="<s:url action="showEditLicorForm" namespace="/socios">

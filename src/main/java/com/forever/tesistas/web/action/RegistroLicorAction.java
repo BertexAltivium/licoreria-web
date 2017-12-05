@@ -21,8 +21,7 @@ public class RegistroLicorAction extends BaseAction {
 
 		logger.info("Licor: " + licor);
 		
-		Boolean admin = isAdmin();
-		if (!admin) {
+		if (!isAdmin()) {
 			return "noAdmin";
 		}
 		LicorDAO licorDAO = new LicorDAO();

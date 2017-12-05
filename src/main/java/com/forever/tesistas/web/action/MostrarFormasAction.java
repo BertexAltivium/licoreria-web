@@ -28,7 +28,6 @@ public class MostrarFormasAction extends BaseAction {
 	private Login login;
 	private Usuario usuario;
 	private CambioPassword cambioPassword;
-	private Boolean admin;
 	private boolean edit = false;
 
 	private Integer licorId;
@@ -40,7 +39,6 @@ public class MostrarFormasAction extends BaseAction {
 	private Distribuidor distribuidor;
 	private Sucursal sucursal;
 
-	private Boolean logged;
 
 	/**
 	 * Acción por defecto que preparará la forma web para el inicio de sesión del
@@ -76,18 +74,13 @@ public class MostrarFormasAction extends BaseAction {
 			licor = licorDAO.getById(licorId);
 			logger.info("licor " + licor);
 		}
-		admin = (Boolean) getSession().get("isAdmin");
-		logged = isLogged();
-		if (admin == null) {
-			admin = false;
+		if (!isAdmin() ) {
 			return "noAdmin";
 		}
 		return "success";
 	}
 
 	public String showChangePasswordForm() {
-		admin = isAdmin();
-		logged = isLogged();
 		logger.info("showChangePasswordForm()");
 		cambioPassword = new CambioPassword();
 		return "success";
@@ -99,15 +92,11 @@ public class MostrarFormasAction extends BaseAction {
 		licores = licorDAO.getAllLicors();
 		logger.info("hay " + licores.size() + " licores");
 		logger.info("licores" + licores);
-		admin = isAdmin();
-		logged = isLogged();
 		return "success";
 	}
 
 	public String showAddLicorForm() {
-		admin = isAdmin();
-		logged = isLogged();
-		if (!admin) {
+		if (!isAdmin()) {
 			return "noAdmin";
 		}
 		return "success";
@@ -123,15 +112,12 @@ public class MostrarFormasAction extends BaseAction {
 		DistribuidorDAO distribuidorDAO = new DistribuidorDAO();
 		distribuidores = distribuidorDAO.getAllDistribuidores();
 		logger.info(distribuidores);
-		admin = isAdmin();
-		logged = isLogged();
 		return "success";
 	}
 
 	public String showDistribuidorForm() {
 		logger.info("showDistribuidorForm()");
-		admin = isAdmin();
-		if (!admin) {
+		if (!isAdmin()) {
 			return "noAdmin";
 		}
 
@@ -141,9 +127,7 @@ public class MostrarFormasAction extends BaseAction {
 			distribuidor = distribuidorDAO.getById(distribuidorId);
 			logger.info("Distribuidor " + distribuidor);
 		}
-		admin = (Boolean) getSession().get("isAdmin");
-		if (admin == null) {
-			admin = false;
+		if (!isAdmin()) {
 			return "noAdmin";
 		}
 
@@ -201,13 +185,7 @@ public class MostrarFormasAction extends BaseAction {
 		this.cambioPassword = cambioPassword;
 	}
 
-	public boolean getAdmin() {
-		return admin;
-	}
 
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
-	}
 
 	public List<Licor> getLicores() {
 		return licores;
@@ -233,13 +211,7 @@ public class MostrarFormasAction extends BaseAction {
 		this.licor = licor;
 	}
 
-	public Boolean getLogged() {
-		return logged;
-	}
 
-	public void setLogged(Boolean logged) {
-		this.logged = logged;
-	}
 
 	public Integer getDistribuidorId() {
 		return distribuidorId;

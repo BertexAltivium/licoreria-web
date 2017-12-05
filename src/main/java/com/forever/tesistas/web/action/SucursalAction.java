@@ -11,16 +11,13 @@ public class SucursalAction extends BaseAction {
 
 	private static final Logger logger = Logger.getLogger(SucursalAction.class);
 
-	private Boolean admin;
 	private Sucursal sucursal;
-	private Boolean logged;
 	private Integer sucursalId;
 
 	public String addSucursal() {
 		logger.info("addSucursal()");
 
-		admin = isAdmin();
-		if (!admin) {
+		if (!isAdmin()) {
 			return "noAdmin";
 		}
 		logger.info("addSucursal()");

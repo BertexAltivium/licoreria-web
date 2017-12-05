@@ -47,7 +47,7 @@
 				<td><s:property value="nombre" /></td>
 				<td><s:property value="address.calle" /></td>
 				<td><s:property value="address.colonia" /></td>
-				<s:if test="admin">
+				<s:if test="#session.isAdmin">
 
 					<td><a
 						href="<s:url action="showDistribuidorForm" namespace="/socios">

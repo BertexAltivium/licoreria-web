@@ -13,9 +13,7 @@ public class SucursalFormAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = Logger.getLogger(SucursalFormAction.class);
-	private Boolean admin;
 	private boolean edit = false;
-	private boolean logged = false;
 	private Sucursal sucursal;
 	private List<Sucursal> sucursales;
 
@@ -23,9 +21,8 @@ public class SucursalFormAction extends BaseAction {
 
 	public String showSucursalForm() {
 		logger.info("showSucursalForm()");
-		admin = isAdmin();
-		logger.info("isAdmin(): "+ admin);
-		if (!admin) {
+
+		if (!isAdmin()) {
 			return "noAdmin";
 		}
 
@@ -35,7 +32,6 @@ public class SucursalFormAction extends BaseAction {
 			sucursal = sucursalDAO.getById(sucursalId);
 			logger.info("Sucursal " + sucursal);
 		}
-		admin = (Boolean) getSession().get("isAdmin");
 
 		return "success";
 	}
@@ -44,16 +40,13 @@ public class SucursalFormAction extends BaseAction {
 		logger.info("showSucursalList");
 		SucursalDAO sucursalDAO = new SucursalDAO();
 		sucursales = sucursalDAO.getAllSucursales();
-		admin = isAdmin();
-		logged = isLogged();
 		return "success";
 	}
 
 	public String deleteSucursal() {
 		logger.info("addSucursal()");
 
-		admin = isAdmin();
-		if (!admin) {
+		if (!isAdmin()) {
 			return "noAdmin";
 		}
 
