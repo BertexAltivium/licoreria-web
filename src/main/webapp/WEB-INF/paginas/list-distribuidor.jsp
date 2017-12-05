@@ -17,9 +17,8 @@
 <h4>Bienvenido ${sessionScope.nombreCompleto}</h4>
 
 <s:if test="admin">
-	<button class="btn btn-default">
-		<a href="<s:url action="showDistribuidorForm" namespace="/socios" />" >Agregar Distribuidor</a>
-	</button>
+	<a href="<s:url action="showDistribuidorForm" namespace="/socios" />"
+		class="btn btn-default"> Agregar Distribuidor </a>
 </s:if>
 
 

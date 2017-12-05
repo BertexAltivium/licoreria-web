@@ -18,9 +18,9 @@
 <h4>Bienvenido ${sessionScope.nombreCompleto}</h4>
 
 <s:if test="admin">
-	<button class="btn btn-default">
-		<a href="<s:url action="showSucursalForm" namespace="/socios" />" >Agregar Sucursal</a>
-	</button>
+	<a href="<s:url action="showSucursalForm" namespace="/socios" />">
+		<button class="btn btn-default">Agregar Sucursal</button>
+	</a>
 </s:if>
 
 
@@ -50,21 +50,21 @@
 
 	<s:iterator value="sucursales" var="sucursal">
 		<tr>
-				<td><s:property value="nombre" /></td>
-				<td><s:property value="address.calle" /></td>
-				<td><s:property value="address.colonia" /></td>
-				<s:if test="admin">
+			<td><s:property value="nombre" /></td>
+			<td><s:property value="address.calle" /></td>
+			<td><s:property value="address.colonia" /></td>
+			<s:if test="admin">
 
-					<td><a
-						href="<s:url action="showSucursalForm" namespace="/socios">
+				<td><a
+					href="<s:url action="showSucursalForm" namespace="/socios">
 							<s:param name="sucursalId">${sucursal.id}</s:param>
 						</s:url>">Editar</a></td>
-					<td><a
-						href="<s:url action="deleteSucursal" namespace="/socios">
+				<td><a
+					href="<s:url action="deleteSucursal" namespace="/socios">
 							<s:param name="sucursalId">${sucursal.id}</s:param>
 						</s:url>">Eliminar</a></td>
-				</s:if>
-			</tr>
+			</s:if>
+		</tr>
 	</s:iterator>
 </table>
 
