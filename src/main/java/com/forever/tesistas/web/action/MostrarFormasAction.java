@@ -77,6 +77,7 @@ public class MostrarFormasAction extends BaseAction {
 			logger.info("licor " + licor);
 		}
 		admin = (Boolean) getSession().get("isAdmin");
+		logged = isLogged();
 		if (admin == null) {
 			admin = false;
 			return "noAdmin";
@@ -85,10 +86,8 @@ public class MostrarFormasAction extends BaseAction {
 	}
 
 	public String showChangePasswordForm() {
-		admin = (Boolean) getSession().get("isAdmin");
-		if (admin == null) {
-			admin = false;
-		}
+		admin = isAdmin();
+		logged = isLogged();
 		logger.info("showChangePasswordForm()");
 		cambioPassword = new CambioPassword();
 		return "success";
@@ -100,31 +99,21 @@ public class MostrarFormasAction extends BaseAction {
 		licores = licorDAO.getAllLicors();
 		logger.info("hay " + licores.size() + " licores");
 		logger.info("licores" + licores);
-		admin = (Boolean) getSession().get("isAdmin");
-		logged = (Boolean) getSession().get("logged");
-		if (admin == null) {
-			admin = false;
-		}
+		admin = isAdmin();
+		logged = isLogged();
 		return "success";
 	}
 
 	public String showAddLicorForm() {
-		admin = (Boolean) getSession().get("isAdmin");
-		if (admin == null) {
-			admin = false;
+		admin = isAdmin();
+		logged = isLogged();
+		if (!admin) {
 			return "noAdmin";
 		}
 		return "success";
 	}
 
-	public String showDireccionForm() {
-		admin = (Boolean) getSession().get("isAdmin");
-		if (admin == null) {
-			admin = false;
-			return "noAdmin";
-		}
-		return "success";
-	}
+
 
 	/**
 	 * Inicia sección correspondiente a Distribuidores
@@ -135,7 +124,7 @@ public class MostrarFormasAction extends BaseAction {
 		distribuidores = distribuidorDAO.getAllDistribuidores();
 		logger.info(distribuidores);
 		admin = isAdmin();
-		logged = (Boolean) getSession().get("logged");
+		logged = isLogged();
 		return "success";
 	}
 

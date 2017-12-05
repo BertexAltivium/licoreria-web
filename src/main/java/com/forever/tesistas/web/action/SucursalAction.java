@@ -2,8 +2,6 @@ package com.forever.tesistas.web.action;
 
 import org.apache.log4j.Logger;
 
-import com.forever.tesistas.web.hibernate.Distribuidor;
-import com.forever.tesistas.web.hibernate.DistribuidorDAO;
 import com.forever.tesistas.web.hibernate.Sucursal;
 import com.forever.tesistas.web.hibernate.SucursalDAO;
 
@@ -30,6 +28,7 @@ public class SucursalAction extends BaseAction {
 		if (sucursal.getId() != null) {
 			sucursalDAO.updateSucursal(sucursal);
 		} else {
+			addActionMessage("Sucursal " + sucursal.getNombre() + " agregada correctamente!!");
 			sucursalDAO.saveSucursal(sucursal);
 		}
 		logger.info("Sucursal guardada exitosamente");

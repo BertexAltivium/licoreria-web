@@ -43,7 +43,7 @@
 					<li><a
 						href="<s:url action="showDistribuidores" namespace="/socios"/>">Distribuidores</a></li>
 
-
+			
 
 					<s:if test="logged">
 						<li><a

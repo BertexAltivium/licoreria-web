@@ -33,6 +33,7 @@ public class BaseAction extends ActionSupport implements SessionAware {
 	private static final long serialVersionUID = 1L;
 	// variable para almacenar el objeto session
 	private SessionMap<String, Object> session;
+	
 
 	protected SessionMap<String, Object> getSession() {
 		return this.session;
@@ -50,7 +51,12 @@ public class BaseAction extends ActionSupport implements SessionAware {
 	}
 
 	public boolean isAdmin() {
-		Boolean admin = (Boolean) getSession().get("isAdmin");
+		Boolean admin = (Boolean) session.get("isAdmin");
 		return admin != null && admin;
+	}
+	
+	public boolean isLogged() {
+		Boolean logged = (Boolean) session.get("logged");
+		return logged != null && logged;
 	}
 }

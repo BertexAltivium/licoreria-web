@@ -1,14 +1,9 @@
 package com.forever.tesistas.web.action;
 
-import java.util.List;
-
 import org.apache.log4j.Logger;
 
-import com.forever.tesistas.web.hibernate.Address;
-import com.forever.tesistas.web.hibernate.AddressDAO;
 import com.forever.tesistas.web.hibernate.Distribuidor;
 import com.forever.tesistas.web.hibernate.DistribuidorDAO;
-import com.forever.tesistas.web.pojo.RegistroDistribuidor;
 
 public class RegistroDistribuidorAction extends BaseAction {
 

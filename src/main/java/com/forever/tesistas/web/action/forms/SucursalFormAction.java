@@ -24,7 +24,7 @@ public class SucursalFormAction extends BaseAction {
 	public String showSucursalForm() {
 		logger.info("showSucursalForm()");
 		admin = isAdmin();
-
+		logger.info("isAdmin(): "+ admin);
 		if (!admin) {
 			return "noAdmin";
 		}
@@ -45,11 +45,7 @@ public class SucursalFormAction extends BaseAction {
 		SucursalDAO sucursalDAO = new SucursalDAO();
 		sucursales = sucursalDAO.getAllSucursales();
 		admin = isAdmin();
-		SessionMap<String, Object> session = getSession();
-		Object objectSession = getSession().get("logged");
-		if (objectSession != null) {
-			logged = (Boolean) objectSession;
-		}
+		logged = isLogged();
 		return "success";
 	}
 
@@ -67,9 +63,17 @@ public class SucursalFormAction extends BaseAction {
 			return "nothingToDelete";
 		} else {
 			sucursalDAO.deleteSucursal(sucursal);
+			addActionMessage("Sucursal " + sucursal.getNombre() + " eliminada!");
+
 			return "success";
 		}
 	}
+	
+	public void validate() {
+		logger.info("validate()");
+
+	}
+
 
 	public Sucursal getSucursal() {
 		return sucursal;
@@ -103,6 +107,4 @@ public class SucursalFormAction extends BaseAction {
 		this.edit = edit;
 	}
 
-	
-	
 }
