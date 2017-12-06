@@ -97,6 +97,89 @@ public class RegistroLicorAction extends BaseAction implements ServletRequestAwa
 		}
 	}
 
+	public void validate() {
+		logger.info("validate()");
+		//logger.info("Información de licor a registrar: " + licor.getNombre());
+		/*
+		if (licor.getNombre() == null || licor.getNombre().isEmpty()) {
+			logger.warn("No se recibió nombre");
+			addFieldError("licor.nombre", "El nombre es requerido");
+		}else{
+			if (!licor.getNombre().matches("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ&\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("licor.nombre", "El campo nombre solo admite valores alfanumericos");
+        	}	
+		}
+		*/
+		if (licor.getTipo() == null || licor.getTipo().isEmpty()) {
+			logger.warn("No se recibió tipo");
+			addFieldError("licor.tipo", "El tipo es requerido");
+		}else{
+			if (!licor.getTipo().matches("^[A-Za-z0-9\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("licor.tipo", "El campo tipo solo admite valores alfanumericos sin acentos");
+        	}
+		}
+		if (licor.getMarca() == null || licor.getMarca().isEmpty()) {
+			logger.warn("No se recibió marca");
+			addFieldError("licor.marca", "La marca es requerida");
+		}else{
+			if (!licor.getMarca().matches("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("licor.marca", "El campo marca solo admite valores alfanumericos");
+        	}	
+		}
+		if (licor.getSubtipo() == null || licor.getSubtipo().isEmpty()) {
+			logger.warn("No se recibió suptipo");
+			addFieldError("licor.suptipo", "El suptipo es requerido");
+		}else{
+			if (!licor.getSubtipo().matches("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("licor.suptipo", "El campo suptipo solo admite valores alfanumericos");
+        	}	
+		}
+		if (licor.getDenominacion() == null || licor.getDenominacion().isEmpty()) {
+			logger.warn("No se recibió denominación");
+			addFieldError("licor.denominacion", "La denominacion es requerida");
+		}else{
+			if (!licor.getDenominacion().matches("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("licor.denominacion", "El campo denominacion solo admite valores alfanumericos");
+        	}	
+		}
+		if (licor.getContenidoNeto() == null || licor.getContenidoNeto().isEmpty()) {
+			logger.warn("No se recibió contenido neto");
+			addFieldError("licor.contenidoNeto", "El contenido neto es requerido");
+		}else{
+			if (!licor.getContenidoNeto().matches("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("licor.contenidoNeto", "El campo contenido neto solo admite valores alfanumericos");
+        	}	
+		}
+		if (licor.getAnio() == null || licor.getAnio().toString().isEmpty()) {
+			logger.warn("No se recibió año");
+			addFieldError("licor.anio", "El año es requerido");
+		}else{
+			if (!licor.getAnio().toString().matches("^[0-9]*{1,11}$")) {
+            logger.warn("Solo admite valores numéricos");
+            addFieldError("licor.anio", "El campo año solo admite valores numéricos");
+        	}	
+		}
+		/*
+		if (licor.getImage() == null || licor.getImage().isEmpty()) {
+			logger.warn("No se recibió imagen");
+			addFieldError("userImage", "La imagen es requerida");
+		}else{
+		
+			if (!licor.getImage().matches("^(https?|ftp|file)://[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]{1,2083}$")) {
+            logger.warn("Solo admite valores alfanumericos y {+&@#/%?=~_|!:,.;}");
+            addFieldError("userImage", "El campo imagen solo admite valores alfanumericos");
+        	}	
+		}*/
+
+	}
+
+
 	/**
 	 * @return the licor
 	 */
@@ -111,12 +194,6 @@ public class RegistroLicorAction extends BaseAction implements ServletRequestAwa
 	public void setLicor(Licor licor) {
 
 		this.licor = licor;
-	}
-
-	public void validate() {
-		if (licor.getAnio() == 0) {
-			addFieldError("usuario.anio", "El año es requerido");
-		}
 	}
 
 	public Integer getLicorId() {

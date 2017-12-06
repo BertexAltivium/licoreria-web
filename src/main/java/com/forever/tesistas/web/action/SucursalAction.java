@@ -39,9 +39,40 @@ public class SucursalAction extends BaseAction {
 
 		if (sucursal.getNombre() == null || sucursal.getNombre().isEmpty()) {
 			logger.warn("No se recibió nombre");
-			addFieldError("nombre", "El nombre es requerido");
+			addFieldError("sucursal.nombre", "El nombre es requerido");
+		}else{
+			if (!sucursal.getNombre().matches("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("sucursal.nombre", "El campo nombre solo admite valores alfanumericos");
+        	}	
 		}
-
+		if (sucursal.getAddress().getNumero() == null || sucursal.getAddress().getNumero().isEmpty()) {
+			logger.warn("No se recibió número de la dirección");
+			addFieldError("sucursal.address.numero", "El número es requerido");
+		}else{
+			if (!sucursal.getAddress().getNumero().matches("^[A-Za-z0-9\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("sucursal.address.numero", "El campo número solo admite valores alfanumericos sin acentos");
+        	}
+		}
+		if (sucursal.getAddress().getCalle() == null || sucursal.getAddress().getCalle().isEmpty()) {
+			logger.warn("No se recibió la calle de la dirección");
+			addFieldError("sucursal.address.calle", "La calle es requerida");
+		}else{
+			if (!sucursal.getAddress().getCalle().matches("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("sucursal.address.calle", "El campo calle solo admite valores alfanumericos");
+        	}	
+		}
+		if (sucursal.getAddress().getColonia() == null || sucursal.getAddress().getColonia().isEmpty()) {
+			logger.warn("No se recibió la colonia de la dirección");
+			addFieldError("sucursal.address.colonia", "La colonia es requerida");
+		}else{
+			if (!sucursal.getAddress().getColonia().matches("^[A-Za-z0-9ñÑáéíóúÁÉÍÓÚ\\s]*{1,45}$")) {
+            logger.warn("Solo admite valores alfanumericos");
+            addFieldError("sucursal.address.colonia", "El campo colonia solo admite valores alfanumericos");
+        	}	
+		}
 	}
 
 	public Sucursal getSucursal() {

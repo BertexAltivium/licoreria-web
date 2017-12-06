@@ -135,7 +135,7 @@
 				<param name="namespace">/socios</param>
 			</result>
 			<result name="noAdmin" type="redirectAction">showSucursalList</result>
-			<result name="input" type="tiles">altasucursal.tiles</result>
+			<result name="input" type="tiles">sucursal.alta.tiles</result>
 		</action>
 
 		<action name="deleteSucursal" method="deleteSucursal"
