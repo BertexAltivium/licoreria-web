@@ -24,6 +24,7 @@ public class Licor implements java.io.Serializable {
 	private Integer id;
 	private String tipo;
 	private String marca;
+	private String nombre;
 	private String subtipo;
 	private Integer edad;
 	private Integer anio;
@@ -37,15 +38,17 @@ public class Licor implements java.io.Serializable {
 	public Licor() {
 	}
 
-	public Licor(String tipo, String marca) {
+	public Licor(String tipo, String marca, String nombre) {
 		this.tipo = tipo;
 		this.marca = marca;
+		this.nombre = nombre;
 	}
 
-	public Licor(String tipo, String marca, String subtipo, Integer edad, Integer anio, String denominacion,
+	public Licor(String tipo, String marca, String nombre, String subtipo, Integer edad, Integer anio, String denominacion,
 			String contenidoNeto, String descripcion, Date createTime, String image, Set<Producto> productos) {
 		this.tipo = tipo;
 		this.marca = marca;
+		this.nombre = nombre;
 		this.subtipo = subtipo;
 		this.edad = edad;
 		this.anio = anio;
@@ -85,6 +88,15 @@ public class Licor implements java.io.Serializable {
 
 	public void setMarca(String marca) {
 		this.marca = marca;
+	}
+	
+	@Column(name = "nombre", nullable = false, length = 45)
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	@Column(name = "subtipo", length = 45)

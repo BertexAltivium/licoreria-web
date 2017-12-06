@@ -7,6 +7,7 @@
 	<s:form action="altaLicor" namespace="/socios" enctype="multipart/form-data" method="POST" class="form-signin">
 		<span id="reauth-email" class="reauth-email"></span>
 		<s:fielderror/>
+		<s:textfield name="licor.nombre" class="form-control" placeholder="Nombre"></s:textfield>
 		<s:textfield name="licor.tipo" class="form-control" placeholder="Tipo"></s:textfield>
 		<s:textfield name="licor.marca" class="form-control" placeholder="Marca" ></s:textfield>
 		<s:textfield name="licor.subtipo" class="form-control" placeholder="Subtipo" ></s:textfield>

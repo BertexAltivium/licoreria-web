@@ -9,6 +9,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
+import com.forever.tesistas.web.action.utils.ImageAction;
 import com.forever.tesistas.web.hibernate.Licor;
 import com.forever.tesistas.web.hibernate.LicorDAO;
 
@@ -25,7 +26,6 @@ public class RegistroLicorAction extends BaseAction implements ServletRequestAwa
 	private String userImageContentType;
 	private String userImageFileName;
 
-	private static final String relativePath = "WEB-INF/images/";
 	
 	private HttpServletRequest servletRequest;
 
@@ -41,12 +41,12 @@ public class RegistroLicorAction extends BaseAction implements ServletRequestAwa
 		}
 		logger.info("file " + userImage);
 		try {
-			String filePath = servletRequest.getSession().getServletContext().getRealPath("/" + relativePath);
+			String filePath = ImageAction.IMAGE_PATH;
 			logger.info("Server path: " + filePath);
-			this.userImageFileName += UUID.randomUUID();
+			this.userImageFileName = UUID.randomUUID() + this.userImageFileName;
 			File fileToCreate = new File(filePath, this.userImageFileName );
 			FileUtils.copyFile(this.userImage, fileToCreate);
-			licor.setImage(relativePath + this.userImageFileName);
+			licor.setImage(filePath + this.userImageFileName);
 		} catch (Exception e) {
 			e.printStackTrace();
 			addActionError(e.getMessage());

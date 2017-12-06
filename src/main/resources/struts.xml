@@ -3,7 +3,7 @@
     "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
     "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
-	<constant name="struts.devMode" value="true" />
+	<constant name="struts.devMode" value="false" />
 	<constant name="struts.ui.theme" value="simple" />
 
 	<package name="default" namespace="/" extends="struts-default">
@@ -226,6 +226,24 @@
 
 		</action>
 
+
+	</package>
+
+
+	<package name="licor" namespace="/licor" extends="struts-default">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<action name="showLicor" method="showLicor"
+			class="com.forever.tesistas.web.action.AlcoholAction">
+			<result name="success" type="tiles">licor.show.tiles
+			</result>
+			<result name="notFound" type="redirectAction">showInicio
+			</result>
+		</action>
 
 	</package>
 

@@ -26,6 +26,17 @@ public class AlcoholAction extends BaseAction {
 		}
 	}
 	
+	public String showLicor() {
+		LicorDAO licorDAO = new LicorDAO();
+		licor = licorDAO.getById(licorId);
+		if (licor == null || licor.getId() == null) {
+			return "notFound";
+		}
+		else {
+			return "success";
+		}
+	}
+	
 	
 	public Licor getLicor() {
 		return licor;
