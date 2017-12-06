@@ -31,6 +31,7 @@ public class Licor implements java.io.Serializable {
 	private String contenidoNeto;
 	private String descripcion;
 	private Date createTime;
+	private String image;
 	private Set<Producto> productos = new HashSet<Producto>(0);
 
 	public Licor() {
@@ -42,7 +43,7 @@ public class Licor implements java.io.Serializable {
 	}
 
 	public Licor(String tipo, String marca, String subtipo, Integer edad, Integer anio, String denominacion,
-			String contenidoNeto, String descripcion, Date createTime, Set<Producto> productos) {
+			String contenidoNeto, String descripcion, Date createTime, String image, Set<Producto> productos) {
 		this.tipo = tipo;
 		this.marca = marca;
 		this.subtipo = subtipo;
@@ -52,6 +53,7 @@ public class Licor implements java.io.Serializable {
 		this.contenidoNeto = contenidoNeto;
 		this.descripcion = descripcion;
 		this.createTime = createTime;
+		this.image = image;
 		this.productos = productos;
 	}
 
@@ -149,8 +151,17 @@ public class Licor implements java.io.Serializable {
 		this.createTime = createTime;
 	}
 
+	@Column(name = "image", length = 2083)
+	public String getImage() {
+		return this.image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "licor_has_producto", catalog = "cadena_licorerias", joinColumns = {
+	@JoinTable(name = "licor_has_producto", catalog = "alcohol", joinColumns = {
 			@JoinColumn(name = "licor_id", nullable = false, updatable = false) }, inverseJoinColumns = {
 					@JoinColumn(name = "producto_id", nullable = false, updatable = false) })
 	public Set<Producto> getProductos() {

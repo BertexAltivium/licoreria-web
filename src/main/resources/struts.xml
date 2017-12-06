@@ -96,6 +96,13 @@
 
 		<action name="altaLicor" method="addLicor"
 			class="com.forever.tesistas.web.action.RegistroLicorAction">
+			<interceptor-ref name="fileUpload">
+				<param name="maximumSize">2097152</param>
+				<param name="allowedTypes">
+					image/png,image/gif,image/jpeg,image/jpg
+				</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
 			<result name="success" type="redirectAction">showInicio</result>
 			<result name="input" type="tiles">licor.add.tiles</result>
 		</action>
@@ -221,4 +228,20 @@
 
 
 	</package>
+
+	<package name="image" namespace="/image" extends="struts-default">
+		<result-types>
+			<result-type name="imageResult"
+				class="com.forever.tesistas.web.action.utils.CustomImageBytesResult" />
+		</result-types>
+
+
+		<action name="ImageAction"
+			class="com.forever.tesistas.web.action.utils.ImageAction">
+			<result name="success" type="imageResult">
+			</result>
+		</action>
+
+	</package>
+
 </struts>
