@@ -1,5 +1,6 @@
 package com.forever.tesistas.web.action;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,8 +9,9 @@ import com.forever.tesistas.web.hibernate.Distribuidor;
 import com.forever.tesistas.web.hibernate.DistribuidorDAO;
 import com.forever.tesistas.web.hibernate.Licor;
 import com.forever.tesistas.web.hibernate.LicorDAO;
+import com.forever.tesistas.web.hibernate.LicorType;
+import com.forever.tesistas.web.hibernate.LicorTypeDAO;
 import com.forever.tesistas.web.hibernate.Sucursal;
-import com.forever.tesistas.web.hibernate.SucursalDAO;
 import com.forever.tesistas.web.hibernate.Usuario;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
@@ -35,11 +37,12 @@ public class MostrarFormasAction extends BaseAction {
 	private Integer distribuidorId;
 
 	private List<Licor> licores;
+	private List<String> licorTypes;
+	private int licorTypeIdx;
 	private List<Distribuidor> distribuidores;
 	private Licor licor;
 	private Distribuidor distribuidor;
 	private Sucursal sucursal;
-
 
 	/**
 	 * Acción por defecto que preparará la forma web para el inicio de sesión del
@@ -67,8 +70,6 @@ public class MostrarFormasAction extends BaseAction {
 		return "success";
 	}
 
-
-
 	public String showChangePasswordForm() {
 		logger.info("showChangePasswordForm()");
 		cambioPassword = new CambioPassword();
@@ -88,18 +89,22 @@ public class MostrarFormasAction extends BaseAction {
 		if (!isAdmin()) {
 			return "noAdmin";
 		}
+
+		LicorTypeDAO licorTypeDAO = new LicorTypeDAO();
+		licorTypes = licorTypeDAO.getAllLicorsTypesStrings();
+		licorTypeIdx = 0;
+		logger.info("licorTypes: " + licorTypes.toString());
 		if (licorId != null) {
 			edit = true;
 			LicorDAO licorDAO = new LicorDAO();
 			licor = licorDAO.getById(licorId);
-			logger.info("Sucursal " + sucursal);
+			licorTypeIdx = Collections.binarySearch(licorTypes, licor.getTipo());
+			getSession().put("licorType", licor.getTipo());
+
 		}
 
-		
 		return "success";
 	}
-
-
 
 	/**
 	 * Inicia sección correspondiente a Distribuidores
@@ -182,8 +187,6 @@ public class MostrarFormasAction extends BaseAction {
 		this.cambioPassword = cambioPassword;
 	}
 
-
-
 	public List<Licor> getLicores() {
 		return licores;
 	}
@@ -207,8 +210,6 @@ public class MostrarFormasAction extends BaseAction {
 	public void setLicor(Licor licor) {
 		this.licor = licor;
 	}
-
-
 
 	public Integer getDistribuidorId() {
 		return distribuidorId;
@@ -248,6 +249,22 @@ public class MostrarFormasAction extends BaseAction {
 
 	public void setSucursal(Sucursal sucursal) {
 		this.sucursal = sucursal;
+	}
+
+	public List<String> getLicorTypes() {
+		return licorTypes;
+	}
+
+	public void setLicorTypes(List<String> licorTypes) {
+		this.licorTypes = licorTypes;
+	}
+
+	public int getLicorTypeIdx() {
+		return licorTypeIdx;
+	}
+
+	public void setLicorTypeIdx(int licorTypeIdx) {
+		this.licorTypeIdx = licorTypeIdx;
 	}
 
 }

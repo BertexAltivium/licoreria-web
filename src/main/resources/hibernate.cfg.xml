@@ -14,7 +14,7 @@
 			jdbc:mysql://localhost:3306/alcohol?useUnicode=true&amp;characterEncoding=UTF-8&amp;useSSL=false
 		</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">rootroot</property>
+		<property name="connection.password">root</property>
 
 		<property name="hibernate.show_sql">true</property>
 		<property name="format_sql">true</property>
@@ -24,9 +24,11 @@
 		<mapping class="com.forever.tesistas.web.hibernate.Distribuidor" />
 		<mapping class="com.forever.tesistas.web.hibernate.Factura" />
 		<mapping class="com.forever.tesistas.web.hibernate.Licor" />
+		<mapping class="com.forever.tesistas.web.hibernate.LicorType" />
 		<mapping class="com.forever.tesistas.web.hibernate.Producto" />
 		<mapping class="com.forever.tesistas.web.hibernate.Sucursal" />
 		<mapping class="com.forever.tesistas.web.hibernate.Usuario" />
+
 	</session-factory>
 
 </hibernate-configuration>

@@ -10,7 +10,13 @@
 		<s:textfield name="licor.id" class="form-control" placeholder="Id" type="hidden"></s:textfield>
 		<s:textfield name="licor.image" class="form-control" placeholder="Image" type="hidden"></s:textfield>
 		<s:textfield name="licor.nombre" class="form-control" placeholder="Nombre" maxlength="45"></s:textfield>
-		<s:textfield name="licor.tipo" class="form-control" placeholder="Tipo" maxlength="45"></s:textfield>
+		
+
+		<select name="licor.tipo" class="form-control" >
+			<c:forEach items="${licorTypes}" var="licorType" varStatus="loop">
+				 <option value="${licorType}"  <c:if test="${licorTypeIdx == loop.index}">selected="selected"</c:if>  >${licorType}</option>
+			</c:forEach> 
+		</select>
 		<s:textfield name="licor.marca" class="form-control" placeholder="Marca" maxlength="45" ></s:textfield>
 		<s:textfield name="licor.subtipo" class="form-control" placeholder="Subtipo" maxlength="45" ></s:textfield>
 		<s:textfield name="licor.edad" class="form-control" placeholder="Edad" maxlength="45"></s:textfield>
