@@ -219,7 +219,20 @@
 
 
 		</action>
-
+		<!-- Seccion: Distribuidor -->
+		<action name="showProductos" method="showProductos"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success" type="tiles">productos.list.tiles</result>
+		</action>
+		<action name="showAddProducto" method="showAddProducto"
+			class="com.forever.tesistas.web.action.MostrarFormasAction">
+			<result name="success" type="tiles">producto.alta.tiles</result>
+		</action>
+		<action name="altaProducto" method="addProducto"
+			class="com.forever.tesistas.web.action.RegistroProductoAction">
+			<result name="success" type="redirectAction">showProductos</result>
+			<result name="input" type="tiles">producto.alta.tiles</result>
+		</action>
 
 	</package>
 

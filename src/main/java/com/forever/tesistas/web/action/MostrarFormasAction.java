@@ -13,6 +13,8 @@ import com.forever.tesistas.web.hibernate.LicorType;
 import com.forever.tesistas.web.hibernate.LicorTypeDAO;
 import com.forever.tesistas.web.hibernate.Sucursal;
 import com.forever.tesistas.web.hibernate.Usuario;
+import com.forever.tesistas.web.hibernate.ProductoDAO;
+import com.forever.tesistas.web.hibernate.Producto;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
 
@@ -35,6 +37,7 @@ public class MostrarFormasAction extends BaseAction {
 
 	private Integer licorId;
 	private Integer distribuidorId;
+	private Integer productoId;
 
 	private List<Licor> licores;
 	private List<String> licorTypes;
@@ -43,6 +46,12 @@ public class MostrarFormasAction extends BaseAction {
 	private Licor licor;
 	private Distribuidor distribuidor;
 	private Sucursal sucursal;
+<<<<<<< HEAD
+=======
+	private Producto producto;
+	private List<Producto> productos;
+	private List<Sucursal> sucursales;
+>>>>>>> productos
 
 	/**
 	 * Acción por defecto que preparará la forma web para el inicio de sesión del
@@ -100,6 +109,35 @@ public class MostrarFormasAction extends BaseAction {
 			licor = licorDAO.getById(licorId);
 			licorTypeIdx = Collections.binarySearch(licorTypes, licor.getTipo());
 			getSession().put("licorType", licor.getTipo());
+
+		}
+
+		return "success";
+	}
+
+	public String showProductos() {
+		logger.info("showProductos");
+		ProductoDAO productoDAO = new ProductoDAO();
+		productos = productoDAO.getAllProductos();
+		logger.info("hay " + productos.size() + " productos");
+		logger.info("productos" + productos);
+		return "success";
+	}
+
+	public String showAddProducto() {
+		if (!isAdmin()) {
+			return "noAdmin";
+		}
+		if (productoId != null) {
+			edit = true;
+			ProductoDAO productoDAO = new ProductoDAO();
+			producto = productoDAO.getById(productoId);
+			logger.info("Producto " + producto);
+		}else{
+			SucursalDAO sucursalDAO = new SucursalDAO();
+			sucursales = sucursalDAO.getAllSucursales();
+			DistribuidorDAO distribuidorDAO = new DistribuidorDAO();
+			distribuidores = distribuidorDAO.getAllDistribuidores();
 
 		}
 
@@ -227,8 +265,40 @@ public class MostrarFormasAction extends BaseAction {
 		this.distribuidores = distribuidores;
 	}
 
+	public List<Sucursal> getSucursales(){
+		return sucursales;
+	}
+
+	public void setSucursales(List<Sucursal> sucursales){
+		this.sucursales = sucursales;
+	}
+
+	public List<Producto> getProductos(){
+		return productos;
+	}
+
+	public void setProductos(List<Producto> productos){
+		this.productos = productos;
+	}
+
+
 	public Distribuidor getDistribuidor() {
 		return distribuidor;
+	}
+
+	public Producto getProducto(){
+		return producto;
+	}
+
+	public void setProducto(Producto producto){
+		this.producto = producto;
+	}
+	public Integer getProductoId(){
+		return productoId;
+	}
+
+	public void setProductoId(Integer productoId){
+		this.productoId = productoId;
 	}
 
 	public void setDistribuidor(Distribuidor distribuidor) {

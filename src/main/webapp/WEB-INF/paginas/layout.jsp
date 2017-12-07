@@ -37,7 +37,8 @@
 								Licor</a></li>
 
 					</s:if>
-
+					<li><a
+						href="<s:url action="showProductos" namespace="/socios"/>">Productos</a></li>
 					<li><a
 						href="<s:url action="showSucursalList" namespace="/socios"/>">Sucursales</a></li>
 					<li><a
