@@ -8,18 +8,16 @@
 		<span id="reauth-email" class="reauth-email"></span>
 		<s:fielderror/>
 		<s:textfield name="licor.id" class="form-control" placeholder="Id" type="hidden"></s:textfield>
-		<s:textfield name="licor.nombre" class="form-control" placeholder="Nombre"></s:textfield>
-		<s:textfield name="licor.tipo" class="form-control" placeholder="Tipo"></s:textfield>
-		<s:textfield name="licor.marca" class="form-control" placeholder="Marca" ></s:textfield>
-		<s:textfield name="licor.subtipo" class="form-control" placeholder="Subtipo" ></s:textfield>
-		<s:textfield name="licor.denominacion" class="form-control" placeholder="Denominación" ></s:textfield>
+		<s:textfield name="licor.image" class="form-control" placeholder="Image" type="hidden"></s:textfield>
+		<s:textfield name="licor.nombre" class="form-control" placeholder="Nombre" maxlength="45"></s:textfield>
+		<s:textfield name="licor.tipo" class="form-control" placeholder="Tipo" maxlength="45"></s:textfield>
+		<s:textfield name="licor.marca" class="form-control" placeholder="Marca" maxlength="45" ></s:textfield>
+		<s:textfield name="licor.subtipo" class="form-control" placeholder="Subtipo" maxlength="45" ></s:textfield>
+		<s:textfield name="licor.edad" class="form-control" placeholder="Edad" maxlength="45"></s:textfield>
 		<s:textfield name="licor.contenidoNeto" class="form-control" placeholder="Contenido neto" ></s:textfield>
-		
-		<s:textarea name="licor.descripcion" class="form-control" placeholder="Description" rows="5" ></s:textarea>
+		<s:textarea name="licor.descripcion" class="form-control" placeholder="Descripción" rows="5" maxlength="500" ></s:textarea>
 		<s:textfield name="licor.anio" type="number" min="1900" class="form-control" placeholder="año" ></s:textfield>
 		<s:file name="userImage" placeholder="Selecciona la imagen a subir" size="40"  class="form-control"/>
-		<%-- Procesamiento del catalogo de generos como un select --%>
-
 
 		<s:if test="edit">
 			<button class="btn btn-primary" type="submit">Actualiza Alcohol</button>
