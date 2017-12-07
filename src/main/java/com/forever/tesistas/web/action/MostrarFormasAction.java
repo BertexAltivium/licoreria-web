@@ -9,6 +9,7 @@ import com.forever.tesistas.web.hibernate.DistribuidorDAO;
 import com.forever.tesistas.web.hibernate.Licor;
 import com.forever.tesistas.web.hibernate.LicorDAO;
 import com.forever.tesistas.web.hibernate.Sucursal;
+import com.forever.tesistas.web.hibernate.SucursalDAO;
 import com.forever.tesistas.web.hibernate.Usuario;
 import com.forever.tesistas.web.pojo.CambioPassword;
 import com.forever.tesistas.web.pojo.Login;
@@ -66,19 +67,7 @@ public class MostrarFormasAction extends BaseAction {
 		return "success";
 	}
 
-	public String showEditLicorForm() {
-		logger.info("showEditAlcohol");
 
-		if (licorId != null) {
-			LicorDAO licorDAO = new LicorDAO();
-			licor = licorDAO.getById(licorId);
-			logger.info("licor " + licor);
-		}
-		if (!isAdmin() ) {
-			return "noAdmin";
-		}
-		return "success";
-	}
 
 	public String showChangePasswordForm() {
 		logger.info("showChangePasswordForm()");
@@ -99,6 +88,14 @@ public class MostrarFormasAction extends BaseAction {
 		if (!isAdmin()) {
 			return "noAdmin";
 		}
+		if (licorId != null) {
+			edit = true;
+			LicorDAO licorDAO = new LicorDAO();
+			licor = licorDAO.getById(licorId);
+			logger.info("Sucursal " + sucursal);
+		}
+
+		
 		return "success";
 	}
 

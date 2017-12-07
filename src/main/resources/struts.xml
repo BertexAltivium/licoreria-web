@@ -195,13 +195,7 @@
 		</action>
 
 
-		<action name="showEditLicorForm" method="showEditLicorForm"
-			class="com.forever.tesistas.web.action.MostrarFormasAction">
-			<result name="success" type="tiles">licor.edit.tiles
-			</result>
-			<result name="noAdmin" type="redirectAction">showInicio
-			</result>
-		</action>
+
 
 		<action name="editLicor" method="editLicor"
 			class="com.forever.tesistas.web.action.RegistroLicorAction">
@@ -226,6 +220,24 @@
 
 		</action>
 
+
+	</package>
+
+
+	<package name="licor" namespace="/licor" extends="struts-default">
+
+		<result-types>
+			<result-type name="tiles"
+				class="org.apache.struts2.views.tiles.TilesResult" />
+		</result-types>
+
+		<action name="showLicor" method="showLicor"
+			class="com.forever.tesistas.web.action.AlcoholAction">
+			<result name="success" type="tiles">licor.show.tiles
+			</result>
+			<result name="notFound" type="redirectAction">showInicio
+			</result>
+		</action>
 
 	</package>
 

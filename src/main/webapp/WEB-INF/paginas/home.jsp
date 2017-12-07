@@ -39,12 +39,16 @@
 
 		<tbody>
 			<tr>
-				<td><s:property value="tipo" /></td>
+				<td><a
+					href="<s:url action="showLicor" namespace="/licor">
+							<s:param name="licorId">${licor.id}</s:param>
+						</s:url>">${licor.nombre}</a></td>
 				<td><s:property value="marca" /></td>
+
 				<s:if test="#session.isAdmin">
 
 					<td><a
-						href="<s:url action="showEditLicorForm" namespace="/socios">
+						href="<s:url action="showAddLicorForm" namespace="/socios">
 							<s:param name="licorId">${licor.id}</s:param>
 						</s:url>">Editar</a></td>
 					<td><a

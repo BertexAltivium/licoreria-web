@@ -9,12 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import com.opensymphony.xwork2.ActionSupport;
 
-
 public class ImageAction extends ActionSupport implements ServletRequestAware {
 
-
 	private static final long serialVersionUID = 1L;
-	private static final String relativePath = "/WEB-INF/images/";
+
+	public static final String IMAGE_PATH = "/home/bertex/image/";
 
 	byte[] imageInByte = null;
 	String imageId;
@@ -59,8 +58,7 @@ public class ImageAction extends ActionSupport implements ServletRequestAware {
 	}
 
 	private File getImageFile(String imageId) {
-		String filePath = servletRequest.getSession().getServletContext().getRealPath("/");
-		File file = new File(filePath , imageId);
+		File file = new File(imageId);
 		System.out.println(file.toString());
 		return file;
 	}

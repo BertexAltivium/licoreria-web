@@ -20,12 +20,18 @@
 	</definition>
 
 	<definition name="licor.add.tiles" extends="baseLayout">
-		<put-attribute name="title" value="Alta libro" />
+		<put-attribute name="title" value="Agregar Licor" />
 		<put-attribute name="body" value="/WEB-INF/paginas/alta-licor.jsp" />
 	</definition>
+
 	<definition name="licor.edit.tiles" extends="baseLayout">
-		<put-attribute name="title" value="Alta libro" />
+		<put-attribute name="title" value="Actualizar Licor" />
 		<put-attribute name="body" value="/WEB-INF/paginas/update-licor.jsp" />
+	</definition>
+
+	<definition name="licor.show.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Licor" />
+		<put-attribute name="body" value="/WEB-INF/paginas/detail-licor.jsp" />
 	</definition>
 
 	<definition name="altadireccion.tiles" extends="baseLayout">
@@ -45,7 +51,7 @@
 		<put-attribute name="body"
 			value="/WEB-INF/paginas/list-sucursales.jsp" />
 	</definition>
-	
+
 	<definition name="sucursal.alta.tiles" extends="baseLayout">
 		<put-attribute name="title" value="Alta sucursal" />
 		<put-attribute name="body" value="/WEB-INF/paginas/alta-sucursal.jsp" />
