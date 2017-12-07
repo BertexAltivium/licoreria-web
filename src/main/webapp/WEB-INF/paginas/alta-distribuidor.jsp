@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix = "c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="s" uri="/struts-tags" %>
-<div class="input-group">
+<div class="card card-container">
 	<h3>Registro de Distribuidor</h3>
 	<s:form action="addDistribuidor" namespace="/socios" method="POST" class="form-signin">
 		<span id="reauth-email" class="reauth-email"></span>

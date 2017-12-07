@@ -7,6 +7,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 /**
@@ -72,8 +75,9 @@ public class Producto implements java.io.Serializable {
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "distribuidor_id", nullable = false)
+
     public Distribuidor getDistribuidor() {
         return this.distribuidor;
     }
@@ -82,8 +86,10 @@ public class Producto implements java.io.Serializable {
         this.distribuidor = distribuidor;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "factura_id", nullable = false)
+    @Cascade({ CascadeType.ALL })
+
     public Factura getFactura() {
         return this.factura;
     }
@@ -92,7 +98,7 @@ public class Producto implements java.io.Serializable {
         this.factura = factura;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sucursal_id", nullable = false)
     public Sucursal getSucursal() {
         return this.sucursal;

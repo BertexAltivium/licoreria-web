@@ -62,4 +62,15 @@
 		<put-attribute name="body"
 			value="/WEB-INF/paginas/alta-distribuidor.jsp" />
 	</definition>
+	<definition name="productos.list.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Productos" />
+		<put-attribute name="body"
+			value="/WEB-INF/paginas/list-productos.jsp" />
+	</definition>
+	<definition name="producto.alta.tiles" extends="baseLayout">
+		<put-attribute name="title" value="Alta producto" />
+		<put-attribute name="body" value="/WEB-INF/paginas/alta-producto.jsp" />
+	</definition>
+
+
 </tiles-definitions>
