@@ -40,17 +40,20 @@ public class RegistroLicorAction extends BaseAction implements ServletRequestAwa
 			return "noAdmin";
 		}
 		logger.info("file " + userImage);
-		try {
-			String filePath = ImageAction.IMAGE_PATH;
-			logger.info("Server path: " + filePath);
-			this.userImageFileName = UUID.randomUUID() + this.userImageFileName;
-			File fileToCreate = new File(filePath, this.userImageFileName );
-			FileUtils.copyFile(this.userImage, fileToCreate);
-			licor.setImage(filePath + this.userImageFileName);
-		} catch (Exception e) {
-			e.printStackTrace();
-			addActionError(e.getMessage());
+		if (userImage != null) {
+			try {
+				String filePath = ImageAction.IMAGE_PATH;
+				logger.info("Server path: " + filePath);
+				this.userImageFileName = UUID.randomUUID() + this.userImageFileName;
+				File fileToCreate = new File(filePath, this.userImageFileName );
+				FileUtils.copyFile(this.userImage, fileToCreate);
+				licor.setImage(filePath + this.userImageFileName);
+			} catch (Exception e) {
+				e.printStackTrace();
+				addActionError(e.getMessage());
+			}
 		}
+
 
 		LicorDAO licorDAO = new LicorDAO();
 		if (licor.getId() != null) {
