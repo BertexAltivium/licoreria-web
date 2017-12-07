@@ -21,16 +21,18 @@ public class RegistroLicorAction extends BaseAction implements ServletRequestAwa
 
 	private Licor licor;
 	private Integer licorId;
-
+	private boolean edit = false;
 	private File userImage;
 	private String userImageContentType;
 	private String userImageFileName;
 
-	
 	private HttpServletRequest servletRequest;
 
-
-
+	/**
+	 * Add a new Licor to the database, if it exist update it.
+	 * 
+	 * @return
+	 */
 	public String addLicor() {
 		logger.info("addLicor()");
 
@@ -39,21 +41,13 @@ public class RegistroLicorAction extends BaseAction implements ServletRequestAwa
 		if (!isAdmin()) {
 			return "noAdmin";
 		}
-		logger.info("file " + userImage);
-		if (userImage != null) {
-			try {
-				String filePath = ImageAction.IMAGE_PATH;
-				logger.info("Server path: " + filePath);
-				this.userImageFileName = UUID.randomUUID() + this.userImageFileName;
-				File fileToCreate = new File(filePath, this.userImageFileName );
-				FileUtils.copyFile(this.userImage, fileToCreate);
-				licor.setImage(filePath + this.userImageFileName);
-			} catch (Exception e) {
-				e.printStackTrace();
-				addActionError(e.getMessage());
-			}
-		}
 
+		logger.info("file " + userImage);
+
+		if (userImage != null) {
+			saveLicorImage();
+
+		}
 
 		LicorDAO licorDAO = new LicorDAO();
 		if (licor.getId() != null) {
@@ -69,31 +63,44 @@ public class RegistroLicorAction extends BaseAction implements ServletRequestAwa
 		return "success";
 	}
 
-	public String editLicor() {
-
-		logger.info("editLicor()");
-
-		logger.info("Licor: " + licor);
-		logger.info("id as param" + licorId);
-
-		Boolean admin = isAdmin();
-		if (!admin) {
-			return "noAdmin";
+	/**
+	 * Save Licor image and replace the old file if it exists.
+	 */
+	private void saveLicorImage() {
+		try {
+			String filePath = ImageAction.IMAGE_PATH;
+			logger.info("Server path: " + filePath);
+			this.userImageFileName = UUID.randomUUID() + this.userImageFileName;
+			File fileToCreate;
+			if (licor.getImage() != null && !licor.getImage().isEmpty()) {
+				fileToCreate = new File(filePath, licor.getImage());
+			} else {
+				fileToCreate = new File(filePath, this.userImageFileName);
+				licor.setImage(filePath + this.userImageFileName);
+			}
+			FileUtils.copyFile(this.userImage, fileToCreate);
+		} catch (Exception e) {
+			e.printStackTrace();
+			addActionError(e.getMessage());
 		}
-		if (licor.getId() == null) {
-			licor.setId(licorId);
-		}
-		LicorDAO licorDAO = new LicorDAO();
-		licorDAO.updateLicor(licor);
-		logger.info("Licor agregado");
-		logger.info("Licor Id" + licor.getId());
-		return "success";
 	}
 
+	/**
+	 * Delete a licor from the database, also delete his image if it exists.
+	 * 
+	 * @return
+	 */
 	public String deleteLicor() {
+		if (!isAdmin()) {
+			return "noAdmin";
+		}
+
 		if (licor == null || licor.getId() == null) {
 			return "nothingToDelete";
 		} else {
+			if (licor.getImage() != null) {
+				FileUtils.deleteQuietly(new File(licor.getImage()));
+			}
 			LicorDAO licorDAO = new LicorDAO();
 			licorDAO.deleteLicor(licor);
 			return "success";
@@ -156,6 +163,14 @@ public class RegistroLicorAction extends BaseAction implements ServletRequestAwa
 
 	public void setServletRequest(HttpServletRequest servletRequest) {
 		this.servletRequest = servletRequest;
+	}
+
+	public boolean isEdit() {
+		return edit;
+	}
+
+	public void setEdit(boolean edit) {
+		this.edit = edit;
 	}
 
 }

@@ -144,7 +144,7 @@ public class Licor implements java.io.Serializable {
 		this.contenidoNeto = contenidoNeto;
 	}
 
-	@Column(name = "descripcion", length = 45)
+	@Column(name = "descripcion", length = 500)
 	public String getDescripcion() {
 		return this.descripcion;
 	}
